@@ -1,4 +1,6 @@
 import React from 'react';
+import { FilterProps } from './App';
+import { Button } from './Components/Button';
 
 type TaskPropsType = {
     id: number
@@ -9,6 +11,8 @@ type TaskPropsType = {
 type TodolistPropsType = {
     title: string
     task: TaskPropsType[]
+    removeTask: (taskID: number) => void
+    filterTask: (filterId: FilterProps) => void
 }
 
 export const Todolist = (props: TodolistPropsType) => {
@@ -18,16 +22,24 @@ export const Todolist = (props: TodolistPropsType) => {
             <h3>{props.title}</h3>
             <input/>
             <button>+</button>
-            <ul>
-                <li><input type="checkbox" checked={props.task[0].isDone}/><span>{props.task[0].term}</span></li>
-                <li><input type="checkbox" checked={props.task[1].isDone}/><span>{props.task[1].term}</span></li>
-                <li><input type="checkbox" checked={props.task[2].isDone}/><span>{props.task[2].term}</span></li>
-            </ul>
             <div>
-                <button>All</button>
-                <button>Active</button>
-                <button>Completed</button>
+                <Button filterTask={props.filterTask} buttonValue="All"/>
+                <Button filterTask={props.filterTask} buttonValue="Active"/>
+                <Button filterTask={props.filterTask} buttonValue="Completed"/>
             </div>
+            <ul>
+                {props.task.map(mf => {
+                        return (
+                                <li key={mf.id}>
+                                    <button onClick={()=> props.removeTask(mf.id)}>X</button>
+                                    <input type="checkbox" checked={mf.isDone}/>
+                                    <span>{mf.term}</span>
+                                </li>
+                        )
+                    }
+                )
+                }
+            </ul>
         </div>
     )
 }
