@@ -37,6 +37,10 @@ export const Todolist = (props: TodolistPropsType) => {
         props.removeTask(id)
     }
 
+    const callbackFilterHandler = (fil: FilterProps) => {
+        props.filterTask(fil)
+    }
+
     return (
         <div>
             <h3>{props.title}</h3>
@@ -45,15 +49,15 @@ export const Todolist = (props: TodolistPropsType) => {
                    onKeyPress={onKeyPressHandler}/>
             <button onClick={onClickPressHandler}>+</button>
             <div>
-                <Button filterTask={props.filterTask} buttonValue="All"/>
-                <Button filterTask={props.filterTask} buttonValue="Active"/>
-                <Button filterTask={props.filterTask} buttonValue="Completed"/>
+               <Button title={"All"} callback={() => callbackFilterHandler("All")}/>
+               <Button title={"Active"} callback={() => callbackFilterHandler("Active")}/>
+               <Button title={"Completed"} callback={() => callbackFilterHandler("Completed")}/>
             </div>
             <ul>
                 {props.task.map(mf => {
                         return (
                                 <li key={mf.id}>
-                                    <button onClick={() => removeTaskHandler(mf.id)}>X</button>
+                                    <Button title={"x"} callback={() => removeTaskHandler(mf.id)}/>
                                     <input type="checkbox" checked={mf.isDone}/>
                                     <span>{mf.term}</span>
                                 </li>
