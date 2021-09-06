@@ -1,6 +1,7 @@
-import React, {ChangeEvent, KeyboardEvent, useState } from 'react';
-import { FilterProps } from './App';
-import { Button } from './Components/Button';
+import React, {ChangeEvent, KeyboardEvent, useState} from 'react';
+import {FilterProps} from './App';
+import {Button} from './Components/Button';
+import {Input} from './Components/Input';
 
 type TaskPropsType = {
     id: string
@@ -17,20 +18,11 @@ type TodolistPropsType = {
 }
 
 export const Todolist = (props: TodolistPropsType) => {
-    let [inputTextValue, setInputTextValue] = useState("")
-
-    const onChangeHandler = (event: ChangeEvent<HTMLInputElement>) => setInputTextValue(event.currentTarget.value)
-
-    const onKeyPressHandler = (event: KeyboardEvent<HTMLInputElement>) => {
-        if (event.key === "Enter") {
-            props.addTask(inputTextValue)
-            setInputTextValue("")
-        }
-    }
+    let [inputTextValue, setInputTextValue] = useState('')
 
     const onClickPressHandler = () => {
         props.addTask(inputTextValue)
-        setInputTextValue("")
+        setInputTextValue('')
     }
 
     const removeTaskHandler = (id: string) => {
@@ -44,23 +36,22 @@ export const Todolist = (props: TodolistPropsType) => {
     return (
         <div>
             <h3>{props.title}</h3>
-            <input value={inputTextValue}
-                   onChange={onChangeHandler}
-                   onKeyPress={onKeyPressHandler}/>
-            <button onClick={onClickPressHandler}>+</button>
+            <Input inputTextValue={inputTextValue} setInputTextValue={setInputTextValue}
+                   callback={onClickPressHandler}/>
+            <Button title={'+'} callback={onClickPressHandler}/>
             <div>
-               <Button title={"All"} callback={() => callbackFilterHandler("All")}/>
-               <Button title={"Active"} callback={() => callbackFilterHandler("Active")}/>
-               <Button title={"Completed"} callback={() => callbackFilterHandler("Completed")}/>
+                <Button title={'All'} callback={() => callbackFilterHandler('All')}/>
+                <Button title={'Active'} callback={() => callbackFilterHandler('Active')}/>
+                <Button title={'Completed'} callback={() => callbackFilterHandler('Completed')}/>
             </div>
             <ul>
                 {props.task.map(mf => {
                         return (
-                                <li key={mf.id}>
-                                    <Button title={"x"} callback={() => removeTaskHandler(mf.id)}/>
-                                    <input type="checkbox" checked={mf.isDone}/>
-                                    <span>{mf.term}</span>
-                                </li>
+                            <li key={mf.id}>
+                                <Button title={'x'} callback={() => removeTaskHandler(mf.id)}/>
+                                <input type="checkbox" checked={mf.isDone}/>
+                                <span>{mf.term}</span>
+                            </li>
                         )
                     }
                 )
