@@ -2,7 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7e68dc76-5612-4367-9842-d746373be903" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/Components/Button.module.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Components/Input.module.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Todolist.module.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/Button.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Button.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/Input.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Input.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Todolist.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Todolist.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -58,6 +65,8 @@
       <workItem from="1629791295618" duration="4663000" />
       <workItem from="1629947062362" duration="13213000" />
       <workItem from="1630641531680" duration="4239000" />
+      <workItem from="1631763148647" duration="4515000" />
+      <workItem from="1631768395295" duration="2469000" />
     </task>
     <servers />
   </component>

@@ -1,0 +1,7 @@
+.borderInput {
+    border: 2px solid red;
+}
+
+.borderInput:focus {
+    outline: none;
+}

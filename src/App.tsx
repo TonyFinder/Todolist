@@ -23,8 +23,12 @@ function App() {
     }
 
     const addTask = (title: string) => {
-        let newTask = [{id: v1(), term: title, isDone: false},...task1]
+        let newTask = [{id: v1(), term: title.trim(), isDone: false},...task1]
         setTask(newTask)
+    }
+
+    const changeCheckbox = (id: string, checked: boolean) => {
+        setTask(task1.map(m => m.id === id ? {...m, isDone: checked} : m))
     }
 
     let [filter, setFilter] = useState<FilterProps>('All')
@@ -49,6 +53,8 @@ function App() {
                 removeTask={removeTask}
                 filterTask={filterTask}
                 addTask={addTask}
+                changeCheckbox={changeCheckbox}
+                filter={filter}
             />
         </div>
     );
