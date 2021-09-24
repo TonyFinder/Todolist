@@ -10,7 +10,9 @@ type ButtonType = {
 export const Button = (props: ButtonType) => {
     const buttonClickHandler = () => props.callback()
 
+    const buttonColor = props.filter === props.title ? styles.color : ''
+
     return (
-        <button className={props.filter === props.title ? styles.color : ''} onClick={buttonClickHandler}>{props.title}</button>
+        <button className={buttonColor} onClick={buttonClickHandler}>{props.title}</button>
     )
 }

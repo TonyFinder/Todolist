@@ -11,13 +11,15 @@ type TaskPropsType = {
 }
 
 type TodolistPropsType = {
+    id: string
     title: string
     task: TaskPropsType[]
-    removeTask: (taskID: string) => void
-    filterTask: (filterId: FilterProps) => void
-    addTask: (title: string) => void
-    changeCheckbox: (id: string, checked: boolean) => void
     filter: FilterProps
+    removeTask: (taskID: string, toDoListId: string) => void
+    filterTask: (filterId: FilterProps, toDoListId: string) => void
+    addTask: (title: string, toDoListId: string) => void
+    changeCheckbox: (id: string, checked: boolean, toDoListId: string) => void
+    removeToDoList: (toDoListId: string) => void
 }
 
 export const Todolist = (props: TodolistPropsType) => {
@@ -25,25 +27,33 @@ export const Todolist = (props: TodolistPropsType) => {
     let [error, setError] = useState(false)
 
     const onClickPressHandler = () => {
-        if (inputTextValue.trim() !== '') props.addTask(inputTextValue)
-        setInputTextValue('')
-        setError(true)
+        if (inputTextValue.trim() !== '') {
+            props.addTask(inputTextValue, props.id)
+            setInputTextValue('')
+        } else {
+            setError(true)
+        }
     }
 
     const removeTaskHandler = (id: string) => {
-        props.removeTask(id)
+        props.removeTask(id, props.id)
     }
 
     const callbackFilterHandler = (fil: FilterProps) => {
-        props.filterTask(fil)
+        props.filterTask(fil, props.id)
     }
 
     const callbackChangeStatus = (id: string, event: ChangeEvent<HTMLInputElement>) => {
-        props.changeCheckbox(id, event.currentTarget.checked)
+        props.changeCheckbox(id, event.currentTarget.checked, props.id)
+    }
+
+    const removeToDoList = () => {
+        props.removeToDoList(props.id)
     }
 
     return (
         <div>
+            <Button title={'x'} callback={removeToDoList}  filter={props.filter}/>
             <h3>{props.title}</h3>
             <Input inputTextValue={inputTextValue} setInputTextValue={setInputTextValue}
                    callback={onClickPressHandler} setError={setError} error={error}/>
@@ -56,12 +66,14 @@ export const Todolist = (props: TodolistPropsType) => {
             </div>
             <ul>
                 {props.task.map(mf => {
-                        return (
-                            <li key={mf.id} className={mf.isDone ? style.completedTasks : ''}>
+                    const completedTaskHandler = mf.isDone ? style.completedTasks : ''
+
+                    return (
+                            <li key={mf.id}>
                                 <Button title={'x'} callback={() => removeTaskHandler(mf.id)}  filter={props.filter}/>
                                 <input onChange={(event) => callbackChangeStatus(mf.id, event)} type="checkbox"
                                        checked={mf.isDone}/>
-                                <span>{mf.term}</span>
+                                <span className={completedTaskHandler}>{mf.term}</span>
                             </li>
                         )
                     }

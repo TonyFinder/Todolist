@@ -1,61 +1,105 @@
 import React, {useState} from 'react';
-import { v1 } from 'uuid';
+import {v1} from 'uuid';
 import './App.css';
 import {Todolist} from './Todolist';
 
 export type FilterProps = 'All' | 'Active' | 'Completed'
 
+export type toDoListsPropsType = {
+    id: string
+    title: string
+    filter: FilterProps
+}
+
+export type taskPropsType = {
+    id: string
+    term: string
+    isDone: boolean
+}
+
+export type tasksPropsType = {
+    [key: string]: taskPropsType[]
+}
+
 function App() {
 
-    let [task1, setTask] = useState([
+    const toDoList_1 = v1()
+    const toDoList_2 = v1()
+
+    let [toDoLists, setToDoLists] = useState<toDoListsPropsType[]>([
+        {id: toDoList_1, title: 'What to learn', filter: 'All'},
+        {id: toDoList_2, title: 'What to buy', filter: 'All'}
+    ])
+
+    const [tasks, setTasks] = useState<tasksPropsType>({
+        [toDoList_1]: [
             {id: v1(), term: 'HTML&CSS', isDone: true},
             {id: v1(), term: 'JS', isDone: true},
             {id: v1(), term: 'React', isDone: false},
             {id: v1(), term: 'HTML&CSS', isDone: true},
             {id: v1(), term: 'JS', isDone: true},
             {id: v1(), term: 'React', isDone: false}
+        ],
+        [toDoList_2]: [
+            {id: v1(), term: 'Bread', isDone: false},
+            {id: v1(), term: 'Milk', isDone: true},
+            {id: v1(), term: 'Soap', isDone: false}
         ]
-    )
+    })
 
-    const removeTask = (taskID: string) => {
-        let removeTask1 = task1.filter(ft => ft.id !== taskID)
-        setTask(removeTask1)
+    const removeTask = (taskID: string, toDoListId: string) => {
+        tasks[toDoListId] = tasks[toDoListId].filter(ft => ft.id !== taskID)
+        setTasks({...tasks})
     }
 
-    const addTask = (title: string) => {
-        let newTask = [{id: v1(), term: title.trim(), isDone: false},...task1]
-        setTask(newTask)
+    const addTask = (title: string, toDoListId: string) => {
+        const newTask = {id: v1(), term: title.trim(), isDone: false}
+        tasks[toDoListId] = [newTask, ...tasks[toDoListId]]
+        setTasks({...tasks})
     }
 
-    const changeCheckbox = (id: string, checked: boolean) => {
-        setTask(task1.map(m => m.id === id ? {...m, isDone: checked} : m))
+    const changeCheckbox = (id: string, checked: boolean, toDoListId: string) => {
+        tasks[toDoListId] = tasks[toDoListId].map(mt => mt.id === id ? {...mt, isDone: checked} : mt)
+        setTasks({...tasks})
     }
 
-    let [filter, setFilter] = useState<FilterProps>('All')
-
-    const filterTask = (filterId: FilterProps) => {
-        setFilter(filterId)
+    const filterTask = (filterId: FilterProps, toDoListId: string) => {
+        setToDoLists(toDoLists.map(mt => mt.id === toDoListId ? {...mt, filter: filterId} : mt))
     }
 
-    let sito = task1
-    if (filter === 'Completed') {
-        sito = task1.filter(f => f.isDone)
-    }
-    if (filter === 'Active') {
-        sito = task1.filter(f => !f.isDone)
+    const removeToDoList = (toDoListId: string) => {
+        setToDoLists(toDoLists.filter(ft => ft.id !== toDoListId))
+        delete tasks[toDoListId]
     }
 
-    return (
-        <div className="App">
+    const toDolistComponents = toDoLists.map(mt => {
+        let sito = tasks[mt.id]
+        if (mt.filter === 'Completed') {
+            sito = tasks[mt.id].filter(f => f.isDone)
+        }
+        if (mt.filter === 'Active') {
+            sito = tasks[mt.id].filter(f => !f.isDone)
+        }
+
+        return (
             <Todolist
-                title="What to learn"
+                key={mt.id}
+                id={mt.id}
+                title={mt.title}
                 task={sito}
+                filter={mt.filter}
                 removeTask={removeTask}
                 filterTask={filterTask}
                 addTask={addTask}
                 changeCheckbox={changeCheckbox}
-                filter={filter}
+                removeToDoList={removeToDoList}
             />
+        )
+    })
+
+    return (
+        <div className="App">
+            {toDolistComponents}
         </div>
     );
 }

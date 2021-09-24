@@ -21,7 +21,9 @@ export const Input = (props: InputPropsType) => {
         if (event.key === 'Enter') props.callback()
     }
 
+    const errorClass = props.error ? style.borderInput : ''
+
     return (
-        <input className={props.error ? style.borderInput : ''} value={props.inputTextValue} onChange={onChangeHandler} onKeyPress={onKeyPressHandler}/>
+        <input className={errorClass} value={props.inputTextValue} onChange={onChangeHandler} onKeyPress={onKeyPressHandler}/>
     )
 }
