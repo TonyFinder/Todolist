@@ -5,3 +5,8 @@
 .completedTasks {
     opacity: 0.5;
 }
+
+.blocks {
+    display: flex;
+    align-items: center;
+}
