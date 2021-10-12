@@ -1,8 +1,7 @@
-import React, { useState } from 'react';
-import { FilterProps } from '../../App';
-import { Button } from '../Button';
-import { Input } from '../Input';
-import style from './AddItemForm.module.css'
+import React, {useState} from 'react';
+import {FilterProps} from '../../App';
+import {IconButton, TextField} from '@material-ui/core';
+import {AddCircleTwoTone} from '@material-ui/icons';
 
 export type AddItemFormPropsType = {
     addItem: (inputTextValue: string) => void
@@ -13,21 +12,38 @@ export const AddItemForm = (props: AddItemFormPropsType) => {
     let [inputTextValue, setInputTextValue] = useState('')
     let [error, setError] = useState(false)
 
-    const onClickPressHandler = () => {
-        if (inputTextValue.trim() !== '') {
-            props.addItem(inputTextValue)
-            setInputTextValue('')
-        } else {
-            setError(true)
+    const onChangeHandler = (value: string) => {
+        setInputTextValue(value)
+        setError(false)
+    }
+
+    const onClickPressHandler = (code: string) => {
+        if (code === "Enter" || code === "NumpadEnter") {
+            if (inputTextValue.trim() !== '') {
+                props.addItem(inputTextValue)
+                setInputTextValue('')
+            } else {
+                setError(true)
+            }
         }
     }
 
     return (
         <div>
-            <Input inputTextValue={inputTextValue} setInputTextValue={setInputTextValue}
-                   callback={onClickPressHandler} setError={setError} error={error}/>
-            <Button title={'+'} callback={onClickPressHandler} filter={props.filter}/>
-            {error && <div className={style.redText}>Title is required</div>}
+            <TextField
+                variant={'outlined'}
+                size={'small'}
+                value={inputTextValue}
+                onChange={(e) => onChangeHandler(e.currentTarget.value)}
+                onKeyPress={(e) => onClickPressHandler(e.code)}
+                label={'Title'}
+                error={error}
+                helperText={error && "Title is a must"}
+                style={{marginBottom: "10px"}}
+                />
+            <IconButton color={'primary'} onClick={() => onClickPressHandler("Enter")}>
+                <AddCircleTwoTone/>
+            </IconButton>
         </div>
     )
 }

@@ -1,9 +1,9 @@
+import {Button, Checkbox, IconButton, List, ListItem} from '@material-ui/core';
 import React, {ChangeEvent} from 'react';
 import {FilterProps} from './App';
 import {AddItemForm} from './Components/AddItemForm/AddItemForm';
-import {Button} from './Components/Button';
 import {EditableSpan} from './Components/EditableSpan/EditableSpan';
-import style from './Todolist.module.css'
+import {DeleteForeverTwoTone, DeleteTwoTone} from '@material-ui/icons';
 
 type TaskPropsType = {
     id: string
@@ -52,34 +52,38 @@ export const Todolist = (props: TodolistPropsType) => {
 
     return (
         <div>
-            <Button title={'x'} callback={removeToDoList} filter={props.filter}/>
+            <IconButton onClick={removeToDoList}>
+                <DeleteForeverTwoTone color={'secondary'}/>
+            </IconButton>
             <h3><EditableSpan changedTitle={changeToDoListTitle} title={props.title} completed={false}/></h3>
             <AddItemForm addItem={addTask} filter={props.filter}/>
             <div>
-                <Button title={'All'} callback={() => callbackFilterHandler('All')} filter={props.filter}/>
-                <Button title={'Active'} callback={() => callbackFilterHandler('Active')} filter={props.filter}/>
-                <Button title={'Completed'} callback={() => callbackFilterHandler('Completed')} filter={props.filter}/>
+                <Button variant={'contained'} color={props.filter === 'All' ? 'primary' : 'inherit'} size={'small'}
+                        onClick={() => callbackFilterHandler('All')}>All</Button>
+                <Button variant={'contained'} color={props.filter === 'Active' ? 'primary' : 'inherit'} size={'small'}
+                        onClick={() => callbackFilterHandler('Active')} style={{margin: "0px 5px"}}>Active</Button>
+                <Button variant={'contained'} color={props.filter === 'Completed' ? 'primary' : 'inherit'}
+                        size={'small'} onClick={() => callbackFilterHandler('Completed')}>Completed</Button>
             </div>
-            <ul>
+            <List>
                 {props.task.map(mf => {
                         const changedTitleTask = (title: string) => {
                             props.changedTitleTask(title, props.id, mf.id)
                         }
 
                         return (
-                            <li key={mf.id}>
-                                <div className={style.blocks}>
-                                    <Button title={'x'} callback={() => removeTaskHandler(mf.id)} filter={props.filter}/>
-                                    <input onChange={(event) => callbackChangeStatus(mf.id, event)} type="checkbox"
-                                           checked={mf.isDone}/>
+                            <ListItem key={mf.id} style={{padding: "0px"}}>
+                                    <IconButton onClick={() => removeTaskHandler(mf.id)} size={'small'}>
+                                        <DeleteTwoTone color={'secondary'}/>
+                                    </IconButton>
+                                    <Checkbox size={'small'} color={'primary'} onChange={(event) => callbackChangeStatus(mf.id, event)} checked={mf.isDone}/>
                                     <EditableSpan title={mf.term} changedTitle={changedTitleTask} completed={mf.isDone}/>
-                                </div>
-                            </li>
+                            </ListItem>
                         )
                     }
                 )
                 }
-            </ul>
+            </List>
         </div>
     )
 }

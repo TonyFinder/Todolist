@@ -1,5 +1,5 @@
 import React, {ChangeEvent, KeyboardEvent, useState} from 'react'
-import style from './EditableSpan.module.css'
+import {TextField, Typography} from '@material-ui/core';
 
 type EditableSpanPropsType = {
     title: string
@@ -11,7 +11,6 @@ export const EditableSpan = (props: EditableSpanPropsType) => {
     let [title, setTitle] = useState(props.title)
     let [inputActive, setInputActive] = useState(false)
 
-    const completedTaskHandler = props.completed ? style.completedTasks : ''
     const inputActiveOn = () => {
         setInputActive(true)
     }
@@ -23,22 +22,23 @@ export const EditableSpan = (props: EditableSpanPropsType) => {
         props.changedTitle(title)
     }
     const onKeyPressHandler = (e: KeyboardEvent<HTMLInputElement>) => {
-        if (e.key === "Enter") titleForToDolist()
+        if (e.key === 'Enter') titleForToDolist()
     }
+
+    const opacityForTasks = props.completed ? {opacity: 0.35} : {opacity: ""}
 
     return (
         <div>
             {inputActive
-                ? <input
+                ? <TextField
                     value={title}
                     onChange={onChangeHandler}
                     onBlur={titleForToDolist}
                     onKeyPress={onKeyPressHandler}
                     autoFocus/>
-                : <span
-                    className={completedTaskHandler}
-                    onDoubleClick={inputActiveOn}
-                >{props.title}</span>
+                : <Typography onDoubleClick={inputActiveOn} style={opacityForTasks}>
+                    {props.title}
+                </Typography>
             }
 
         </div>

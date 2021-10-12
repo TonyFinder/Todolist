@@ -2,14 +2,21 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7e68dc76-5612-4367-9842-d746373be903" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/Components/AddItemForm/AddItemForm.module.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Components/AddItemForm/AddItemForm.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Components/EditableSpan/EditableSpan.module.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Components/EditableSpan/EditableSpan.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.css" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Todolist.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/Todolist.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/AddItemForm/AddItemForm.module.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/AddItemForm/AddItemForm.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/AddItemForm/AddItemForm.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/Button.module.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/Button.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/EditableSpan/EditableSpan.module.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/EditableSpan/EditableSpan.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/EditableSpan/EditableSpan.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/Input.module.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/Input.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Todolist.module.css" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Todolist.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Todolist.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -45,9 +52,11 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="settings.nodejs" />
-    <property name="ts.external.directory.path" value="D:\Program Files\JetBrains\WebStorm 2021.1.3\plugins\JavaScriptLanguage\jsLanguageServicesImpl\external" />
+    <property name="ts.external.directory.path" value="D:\Incubator\Studying\Monday-Friday\made-by-myself-todolist\01\node_modules\typescript\lib" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
@@ -57,6 +66,23 @@
     <key name="MoveFile.RECENT_KEYS">
       <recent name="D:\Incubator\Studying\Monday\made-by-myself-todolist\01\src\Components\" />
     </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="start" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="start" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="npm.start" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -72,7 +98,12 @@
       <workItem from="1631763148647" duration="4515000" />
       <workItem from="1631768395295" duration="3289000" />
       <workItem from="1632441134139" duration="13739000" />
-      <workItem from="1632723606046" duration="9628000" />
+      <workItem from="1632723606046" duration="9906000" />
+      <workItem from="1633401532495" duration="1195000" />
+      <workItem from="1633404487808" duration="3000" />
+      <workItem from="1633759372500" duration="1440000" />
+      <workItem from="1633950961964" duration="284000" />
+      <workItem from="1633951256599" duration="19675000" />
     </task>
     <servers />
   </component>
