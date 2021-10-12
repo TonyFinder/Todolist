@@ -55,7 +55,7 @@ export const Todolist = (props: TodolistPropsType) => {
             <IconButton onClick={removeToDoList}>
                 <DeleteForeverTwoTone color={'secondary'}/>
             </IconButton>
-            <h3><EditableSpan changedTitle={changeToDoListTitle} title={props.title} completed={false}/></h3>
+            <h3><EditableSpan changedTitle={changeToDoListTitle} title={props.title} completed={false} header={true}/></h3>
             <AddItemForm addItem={addTask} filter={props.filter}/>
             <div>
                 <Button variant={'contained'} color={props.filter === 'All' ? 'primary' : 'inherit'} size={'small'}
@@ -77,7 +77,7 @@ export const Todolist = (props: TodolistPropsType) => {
                                         <DeleteTwoTone color={'secondary'}/>
                                     </IconButton>
                                     <Checkbox size={'small'} color={'primary'} onChange={(event) => callbackChangeStatus(mf.id, event)} checked={mf.isDone}/>
-                                    <EditableSpan title={mf.term} changedTitle={changedTitleTask} completed={mf.isDone}/>
+                                    <EditableSpan title={mf.term} changedTitle={changedTitleTask} completed={mf.isDone} header={false}/>
                             </ListItem>
                         )
                     }

@@ -5,6 +5,7 @@ type EditableSpanPropsType = {
     title: string
     completed: boolean
     changedTitle: (title: string) => void
+    header: boolean
 }
 
 export const EditableSpan = (props: EditableSpanPropsType) => {
@@ -25,7 +26,7 @@ export const EditableSpan = (props: EditableSpanPropsType) => {
         if (e.key === 'Enter') titleForToDolist()
     }
 
-    const opacityForTasks = props.completed ? {opacity: 0.35} : {opacity: ""}
+    const opacityAndBoldForTasks: any = props.header ? {fontWeight: 'bold', fontSize: 'larger'} : (props.completed ? {opacity: 0.35} : {opacity: 1})
 
     return (
         <div>
@@ -35,8 +36,9 @@ export const EditableSpan = (props: EditableSpanPropsType) => {
                     onChange={onChangeHandler}
                     onBlur={titleForToDolist}
                     onKeyPress={onKeyPressHandler}
-                    autoFocus/>
-                : <Typography onDoubleClick={inputActiveOn} style={opacityForTasks}>
+                    autoFocus
+                />
+                : <Typography onDoubleClick={inputActiveOn} style={opacityAndBoldForTasks}>
                     {props.title}
                 </Typography>
             }
