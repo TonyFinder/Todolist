@@ -9,6 +9,7 @@ export type AddItemFormPropsType = {
 }
 
 export const AddItemForm = (props: AddItemFormPropsType) => {
+    //Хуки React
     let [inputTextValue, setInputTextValue] = useState('')
     let [error, setError] = useState(false)
 

@@ -9,15 +9,12 @@ type EditableSpanPropsType = {
 }
 
 export const EditableSpan = (props: EditableSpanPropsType) => {
+    //Хуки React
     let [title, setTitle] = useState(props.title)
     let [inputActive, setInputActive] = useState(false)
 
-    const inputActiveOn = () => {
-        setInputActive(true)
-    }
-    const onChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
-        setTitle(e.currentTarget.value)
-    }
+    const inputActiveOn = () => setInputActive(true)
+    const onChangeHandler = (e: ChangeEvent<HTMLInputElement>) => setTitle(e.currentTarget.value)
     const titleForToDolist = () => {
         setInputActive(false)
         props.changedTitle(title)
@@ -26,7 +23,9 @@ export const EditableSpan = (props: EditableSpanPropsType) => {
         if (e.key === 'Enter') titleForToDolist()
     }
 
-    const opacityAndBoldForTasks: any = props.header ? {fontWeight: 'bold', fontSize: 'larger'} : (props.completed ? {opacity: 0.35} : {opacity: 1})
+    const opacityAndBoldForTasks: any = props.header
+        ? {fontWeight: 'bold', fontSize: 'larger'}
+        : (props.completed ? {opacity: 0.35} : {opacity: 1})
 
     return (
         <div>
