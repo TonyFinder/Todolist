@@ -2,22 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7e68dc76-5612-4367-9842-d746373be903" name="Default Changelist" comment="Lesson 10. Redux, React-Redux, useSelector, useDispatch and refactoring.">
-      <change afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/made-by-myself-todolist.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/_saves.rar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/core/store/store.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Components/Task/Task.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Components/AddItemForm/AddItemForm.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/AddItemForm/AddItemForm.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Components/EditableSpan/EditableSpan.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/EditableSpan/EditableSpan.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Todolist.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Todolist.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/core/reducer-tasks.test.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/core/reducer-tasks.test.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/core/reducer-tasks.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/core/reducer-tasks.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/core/reducer-todolist.test.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/core/reducer-todolist.test.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/core/reducer-todolist.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/core/reducer-todolist.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Todolist.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Todolist/Todolist.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -27,8 +17,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="TypeScript JSX File" />
         <option value="TypeScript File" />
+        <option value="TypeScript JSX File" />
       </list>
     </option>
   </component>
@@ -55,7 +45,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/Components/Todolist" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="nodejs.jest.jest_package" value="$PROJECT_DIR$/node_modules/react-scripts" />
@@ -69,6 +59,7 @@
       <recent name="D:\Incubator\Studying\Monday\made-by-myself-todolist\01\src\Todolist.tsx" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\Incubator\Studying\Monday-Friday\made-by-myself-todolist\src\Components\Todolist" />
       <recent name="D:\Incubator\Studying\Monday\made-by-myself-todolist\01\src\Components\" />
     </key>
   </component>
@@ -118,10 +109,10 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="npm.start" />
         <item itemvalue="npm.test" />
-        <item itemvalue="Jest.correct todolist should be removed" />
+        <item itemvalue="npm.start" />
         <item itemvalue="npm.deploy" />
+        <item itemvalue="Jest.correct todolist should be removed" />
       </list>
     </recent_temporary>
   </component>
@@ -157,7 +148,11 @@
       <workItem from="1639100399031" duration="15000" />
       <workItem from="1641727424950" duration="635000" />
       <workItem from="1641730237695" duration="17000" />
-      <workItem from="1642038558009" duration="9634000" />
+      <workItem from="1642038558009" duration="9986000" />
+      <workItem from="1642075529759" duration="635000" />
+      <workItem from="1642484286502" duration="701000" />
+      <workItem from="1642504140627" duration="1221000" />
+      <workItem from="1642559834095" duration="4194000" />
     </task>
     <task id="LOCAL-00001" summary="Lesson 7. Material UI. Changed all custom components to Material UI.">
       <created>1634021489874</created>
@@ -187,7 +182,14 @@
       <option name="project" value="LOCAL" />
       <updated>1634776938223</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Lesson 10. Redux, React-Redux, useSelector, useDispatch and refactoring.">
+      <created>1642048798720</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1642048798720</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

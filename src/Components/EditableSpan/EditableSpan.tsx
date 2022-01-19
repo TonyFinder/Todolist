@@ -8,7 +8,8 @@ type EditableSpanPropsType = {
     header: boolean
 }
 
-export const EditableSpan = (props: EditableSpanPropsType) => {
+export const EditableSpan = React.memo( (props: EditableSpanPropsType) => {
+    console.log("EditableSpan")
     //Хуки React
     let [title, setTitle] = useState(props.title)
     let [inputActive, setInputActive] = useState(false)
@@ -44,4 +45,4 @@ export const EditableSpan = (props: EditableSpanPropsType) => {
 
         </div>
     )
-}
+} )

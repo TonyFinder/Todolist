@@ -1,33 +1,32 @@
-import React, {useState} from 'react';
-import {FilterProps} from '../../App';
+import React, {useCallback, useState} from 'react';
 import {IconButton, TextField} from '@material-ui/core';
 import {AddCircleTwoTone} from '@material-ui/icons';
 
 export type AddItemFormPropsType = {
     addItem: (inputTextValue: string) => void
-    filter: FilterProps
 }
 
-export const AddItemForm = (props: AddItemFormPropsType) => {
+export const AddItemForm = React.memo( ({addItem}: AddItemFormPropsType) => {
+    console.log("AddItemForm")
     //Хуки React
     let [inputTextValue, setInputTextValue] = useState('')
     let [error, setError] = useState(false)
 
-    const onChangeHandler = (value: string) => {
+    const onChangeHandler = useCallback( (value: string) => {
         setInputTextValue(value)
         setError(false)
-    }
+    }, [])
 
-    const onClickPressHandler = (code: string) => {
+    const onClickPressHandler = useCallback( (code: string) => {
         if (code === "Enter" || code === "NumpadEnter") {
             if (inputTextValue.trim() !== '') {
-                props.addItem(inputTextValue)
+                addItem(inputTextValue)
                 setInputTextValue('')
             } else {
                 setError(true)
             }
         }
-    }
+    }, [inputTextValue, addItem])
 
     return (
         <div>
@@ -47,4 +46,4 @@ export const AddItemForm = (props: AddItemFormPropsType) => {
             </IconButton>
         </div>
     )
-}
+} )

@@ -1,6 +1,6 @@
-import React from 'react';
+import React, {useCallback} from 'react';
 import {AddItemForm} from './Components/AddItemForm/AddItemForm';
-import {Todolist} from './Todolist';
+import {Todolist} from './Components/Todolist/Todolist';
 import {AppBar, Button, Container, Grid, IconButton, Paper, Toolbar, Typography} from '@material-ui/core';
 import {Menu} from '@material-ui/icons';
 import {useDispatch, useSelector} from 'react-redux';
@@ -23,12 +23,13 @@ export type tasksPropsType = {
 }
 
 export function App() {
+    console.log("App")
     //Хуки React-Redux
     let dispatch = useDispatch()
     let todolists = useSelector<AppStateRootType, todolistsPropsType[]>(state => state.todolists)
 
     //Добавление тудулиста
-    const addTodolist = (title: string) => dispatch(addTodolistAC(title))
+    const addTodolist = useCallback( (title: string) => dispatch(addTodolistAC(title)), [dispatch])
 
     //Отрисовка тудулистов
     const todolistComponents = todolists.map(mt => {
@@ -36,7 +37,6 @@ export function App() {
             <Grid item key={mt.id}>
                 <Paper elevation={4} style={{padding: '15px'}}>
                     <Todolist
-                        key={mt.id}
                         todolistId={mt.id}
                     />
                 </Paper>
@@ -59,7 +59,7 @@ export function App() {
             </AppBar>
             <Container maxWidth={'xl'}>
                 <Grid container style={{justifyContent: 'center', margin: '20px'}}>
-                    <AddItemForm addItem={addTodolist} filter={'All'}/>
+                    <AddItemForm addItem={addTodolist}/>
                 </Grid>
                 <Grid container spacing={3} style={{justifyContent: 'center'}}>
                     {todolistComponents}
