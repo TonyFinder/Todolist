@@ -22,11 +22,11 @@ export type tasksPropsType = {
     [key: string]: taskPropsType[]
 }
 
-export function App() {
+export const App = React.memo( () => {
     console.log("App")
     //Хуки React-Redux
     let dispatch = useDispatch()
-    let todolists = useSelector<AppStateRootType, todolistsPropsType[]>(state => state.todolists)
+    let todolists = useSelector<AppStateRootType, string[]>(state => state.todolists.map(m => m.id))
 
     //Добавление тудулиста
     const addTodolist = useCallback( (title: string) => dispatch(addTodolistAC(title)), [dispatch])
@@ -34,10 +34,10 @@ export function App() {
     //Отрисовка тудулистов
     const todolistComponents = todolists.map(mt => {
         return (
-            <Grid item key={mt.id}>
+            <Grid item key={mt}>
                 <Paper elevation={4} style={{padding: '15px'}}>
                     <Todolist
-                        todolistId={mt.id}
+                        todolistId={mt}
                     />
                 </Paper>
             </Grid>
@@ -67,4 +67,4 @@ export function App() {
             </Container>
         </div>
     );
-}
+} )

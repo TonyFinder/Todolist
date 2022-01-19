@@ -12,12 +12,12 @@ import {Task} from '../Task/Task';
 
 type TodolistPropsType = {todolistId: string}
 
-export const Todolist = React.memo( (props: TodolistPropsType) => {
+export const Todolist = React.memo( ({todolistId}: TodolistPropsType) => {
     console.log("Todolist")
     //Хуки react-redux
     let dispatch = useDispatch()
-    let todolist = useSelector<AppStateRootType, todolistsPropsType>(state => state.todolists.filter(f => f.id === props.todolistId)[0])
-    let tasks = useSelector<AppStateRootType, taskPropsType[]>(state => state.tasks[props.todolistId])
+    let todolist = useSelector<AppStateRootType, todolistsPropsType>(state => state.todolists.filter(f => f.id === todolistId)[0])
+    let tasks = useSelector<AppStateRootType, taskPropsType[]>(state => state.tasks[todolistId])
 
     //Фильтрация тасков
     todolist.filter === 'Active'
@@ -28,21 +28,19 @@ export const Todolist = React.memo( (props: TodolistPropsType) => {
             : tasks = [...tasks]
 
     //Работа с тасками
-    const addTask = useCallback( (title: string) => dispatch(addTaskAC(title, props.todolistId)), [dispatch, props.todolistId])
-    /*const changeTaskCheckbox = (id: string, event: ChangeEvent<HTMLInputElement>) => dispatch(changeCheckboxAC(id, event.currentTarget.checked, props.todolistId))*/
-    const filterTasks = (filter: FilterProps) => dispatch(filterTaskAC(filter, props.todolistId))
-    /*const removeTask = (id: string) => dispatch(removeTaskAC(id, props.todolistId))*/
+    const addTask = useCallback( (title: string) => dispatch(addTaskAC(title, todolistId)), [dispatch, todolistId])
+    const filterTasks = useCallback( (filter: FilterProps) => dispatch(filterTaskAC(filter, todolistId)), [dispatch, todolistId])
 
     // Работа с тудулистами
-    const removeTodolist = () => dispatch(removeTodolistAC(props.todolistId))
-    const changeTodolistTitle = useCallback( (title: string) => dispatch(changeTodolistTitleAC(title, props.todolistId)), [dispatch, props.todolistId])
+    const removeTodolist = useCallback( () => dispatch(removeTodolistAC(todolistId)), [dispatch, todolistId])
+    const changeTodolistTitle = useCallback( (title: string) => dispatch(changeTodolistTitleAC(title, todolistId)), [dispatch, todolistId])
 
     return (
         <div>
             <IconButton onClick={removeTodolist}>
                 <DeleteForeverTwoTone color={'secondary'}/>
             </IconButton>
-            <h3><EditableSpan changedTitle={changeTodolistTitle} title={todolist.title} completed={false}
+            <h3><EditableSpan changedTitle={changeTodolistTitle} titleMain={todolist.title} completed={false}
                               header={true}/></h3>
             <AddItemForm addItem={addTask} />
             <div>
@@ -55,7 +53,7 @@ export const Todolist = React.memo( (props: TodolistPropsType) => {
                         size={'small'} onClick={() => filterTasks('Completed')}>Completed</Button>
             </div>
             <List>
-                {tasks.map(mf => <Task key={mf.id} task={mf} todolistId={props.todolistId}/>)}
+                {tasks.map(mf => <Task key={mf.id} taskId={mf.id} todolistId={todolistId}/>)}
             </List>
         </div>
     )

@@ -1,32 +1,33 @@
-import React, {ChangeEvent, KeyboardEvent, useState} from 'react'
+import React, {ChangeEvent, KeyboardEvent, useCallback, useState} from 'react'
 import {TextField, Typography} from '@material-ui/core';
 
 type EditableSpanPropsType = {
-    title: string
+    titleMain: string
     completed: boolean
     changedTitle: (title: string) => void
     header: boolean
 }
 
-export const EditableSpan = React.memo( (props: EditableSpanPropsType) => {
+export const EditableSpan = React.memo( ({header, completed, changedTitle, titleMain}: EditableSpanPropsType) => {
     console.log("EditableSpan")
     //Хуки React
-    let [title, setTitle] = useState(props.title)
+    let [title, setTitle] = useState(titleMain)
     let [inputActive, setInputActive] = useState(false)
 
-    const inputActiveOn = () => setInputActive(true)
-    const onChangeHandler = (e: ChangeEvent<HTMLInputElement>) => setTitle(e.currentTarget.value)
-    const titleForToDolist = () => {
+    const inputActiveOn = useCallback( () => setInputActive(true), [])
+    const onChangeHandler = useCallback( (e: ChangeEvent<HTMLInputElement>) => setTitle(e.currentTarget.value), [])
+    const titleForToDolist = useCallback( () => {
         setInputActive(false)
-        props.changedTitle(title)
-    }
-    const onKeyPressHandler = (e: KeyboardEvent<HTMLInputElement>) => {
+        changedTitle(title)
+    }, [changedTitle, title])
+    const onKeyPressHandler = useCallback( (e: KeyboardEvent<HTMLInputElement>) => {
         if (e.key === 'Enter') titleForToDolist()
-    }
+    }, [titleForToDolist])
 
-    const opacityAndBoldForTasks: any = props.header
+    const opacityAndBoldForTasks: any = header
         ? {fontWeight: 'bold', fontSize: 'larger'}
-        : (props.completed ? {opacity: 0.35} : {opacity: 1})
+        : (completed ? {opacity: 0.35} : {opacity: 1})
+
 
     return (
         <div>
@@ -39,7 +40,7 @@ export const EditableSpan = React.memo( (props: EditableSpanPropsType) => {
                     autoFocus
                 />
                 : <Typography onDoubleClick={inputActiveOn} style={opacityAndBoldForTasks}>
-                    {props.title}
+                    {titleMain}
                 </Typography>
             }
 
