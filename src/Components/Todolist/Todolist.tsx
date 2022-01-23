@@ -13,7 +13,7 @@ import {Task} from '../Task/Task';
 type TodolistPropsType = {todolistId: string}
 
 export const Todolist = React.memo( ({todolistId}: TodolistPropsType) => {
-    console.log("Todolist")
+    // console.log("Todolist")
     //Хуки react-redux
     let dispatch = useDispatch()
     let todolist = useSelector<AppStateRootType, todolistsPropsType>(state => state.todolists.filter(f => f.id === todolistId)[0])

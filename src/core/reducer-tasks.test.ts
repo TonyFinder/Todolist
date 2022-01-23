@@ -10,14 +10,14 @@ let todolists: Array<todolistsPropsType> = [
 ]
 let tasks: tasksPropsType = {
     ['toDoList_1']: [
-        {id: '1', term: 'HTML&CSS', isDone: true},
-        {id: '2', term: 'JS', isDone: true},
-        {id: '3', term: 'React', isDone: false}
+        {id: '1', title: 'HTML&CSS', isDone: true},
+        {id: '2', title: 'JS', isDone: true},
+        {id: '3', title: 'React', isDone: false}
     ],
     ['toDoList_2']: [
-        {id: '1', term: 'Bread', isDone: false},
-        {id: '2', term: 'Milk', isDone: true},
-        {id: '3', term: 'Soap', isDone: false}
+        {id: '1', title: 'Bread', isDone: false},
+        {id: '2', title: 'Milk', isDone: true},
+        {id: '3', title: 'Soap', isDone: false}
     ]
 }
 
@@ -27,13 +27,13 @@ test('task should be removed', () => {
 
     expect(endTasks).toEqual({
         ['toDoList_1']: [
-            {id: '1', term: 'HTML&CSS', isDone: true},
-            {id: '3', term: 'React', isDone: false}
+            {id: '1', title: 'HTML&CSS', isDone: true},
+            {id: '3', title: 'React', isDone: false}
         ],
         ['toDoList_2']: [
-            {id: '1', term: 'Bread', isDone: false},
-            {id: '2', term: 'Milk', isDone: true},
-            {id: '3', term: 'Soap', isDone: false}
+            {id: '1', title: 'Bread', isDone: false},
+            {id: '2', title: 'Milk', isDone: true},
+            {id: '3', title: 'Soap', isDone: false}
         ]
     })
 })
@@ -41,7 +41,7 @@ test('new task have to be added', () => {
     const action = addTaskAC('Apples', 'toDoList_2')
     const newTasks = tasksReducer(tasks, action)
 
-    expect(newTasks['toDoList_2'][0].term).toBe('Apples')
+    expect(newTasks['toDoList_2'][0].title).toBe('Apples')
     expect(newTasks['toDoList_2'][0].id).toBeDefined()
     expect(newTasks['toDoList_2'][0].isDone).toBeFalsy()
     expect(newTasks['toDoList_1'].length).toBe(3)
@@ -54,14 +54,14 @@ test('change status of the task', () => {
     expect(endTasks['toDoList_2'][2].isDone).toBeTruthy()
     expect(endTasks).toEqual({
         ['toDoList_1']: [
-            {id: '1', term: 'HTML&CSS', isDone: true},
-            {id: '2', term: 'JS', isDone: true},
-            {id: '3', term: 'React', isDone: false}
+            {id: '1', title: 'HTML&CSS', isDone: true},
+            {id: '2', title: 'JS', isDone: true},
+            {id: '3', title: 'React', isDone: false}
         ],
         ['toDoList_2']: [
-            {id: '1', term: 'Bread', isDone: false},
-            {id: '2', term: 'Milk', isDone: true},
-            {id: '3', term: 'Soap', isDone: true}
+            {id: '1', title: 'Bread', isDone: false},
+            {id: '2', title: 'Milk', isDone: true},
+            {id: '3', title: 'Soap', isDone: true}
         ]
     })
 })
@@ -71,14 +71,14 @@ test('change title for the task', () => {
 
     expect(endTasks).toEqual({
         ["toDoList_1"]: [
-            {id: "1", term: 'HTML&CSS', isDone: true},
-            {id: "2", term: 'JS', isDone: true},
-            {id: "3", term: 'React', isDone: false}
+            {id: "1", title: 'HTML&CSS', isDone: true},
+            {id: "2", title: 'JS', isDone: true},
+            {id: "3", title: 'React', isDone: false}
         ],
         ["toDoList_2"]: [
-            {id: "1", term: 'Bread', isDone: false},
-            {id: "2", term: 'Kefir', isDone: true},
-            {id: "3", term: 'Soap', isDone: false}
+            {id: "1", title: 'Bread', isDone: false},
+            {id: "2", title: 'Kefir', isDone: true},
+            {id: "3", title: 'Soap', isDone: false}
         ]
     })
 })
@@ -92,9 +92,9 @@ test('todolist have to be deleted from tasks', () => {
     ])
     expect(newTasks).toEqual({
         ["toDoList_2"]: [
-            {id: "1", term: 'Bread', isDone: false},
-            {id: "2", term: 'Milk', isDone: true},
-            {id: "3", term: 'Soap', isDone: false}
+            {id: "1", title: 'Bread', isDone: false},
+            {id: "2", title: 'Milk', isDone: true},
+            {id: "3", title: 'Soap', isDone: false}
         ]
     })
 })

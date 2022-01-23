@@ -15,7 +15,7 @@ export type todolistsPropsType = {
 }
 export type taskPropsType = {
     id: string
-    term: string
+    title: string
     isDone: boolean
 }
 export type tasksPropsType = {
@@ -23,7 +23,7 @@ export type tasksPropsType = {
 }
 
 export const App = React.memo( () => {
-    console.log("App")
+    // console.log("App")
     //Хуки React-Redux
     let dispatch = useDispatch()
     let todolists = useSelector<AppStateRootType, string[]>(state => state.todolists.map(m => m.id))

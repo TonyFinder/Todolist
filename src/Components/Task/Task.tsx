@@ -13,7 +13,7 @@ type TaskPropsType = {
 }
 
 export const Task = React.memo( ({todolistId, taskId}: TaskPropsType) => {
-    console.log("Task")
+    // console.log("Task")
     const task = useSelector<AppStateRootType, taskPropsType>(state => state.tasks[todolistId].filter(f => f.id === taskId)[0])
     const dispatch = useDispatch()
 
@@ -28,7 +28,7 @@ export const Task = React.memo( ({todolistId, taskId}: TaskPropsType) => {
             </IconButton>
             <Checkbox size={'small'} color={'primary'}
                       onChange={(event) => changeTaskCheckbox(task.id, event)} checked={task.isDone}/>
-            <EditableSpan titleMain={task.term} changedTitle={changedTitleTask} completed={task.isDone}
+            <EditableSpan titleMain={task.title} changedTitle={changedTitleTask} completed={task.isDone}
                           header={false}/>
         </ListItem>
     )
