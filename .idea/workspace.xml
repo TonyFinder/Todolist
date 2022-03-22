@@ -1,12 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="7e68dc76-5612-4367-9842-d746373be903" name="Default Changelist" comment="Lesson 12. Storybook, decorators.">
-      <change afterPath="$PROJECT_DIR$/integration/app.test.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/integration/jest.config.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/integration/setupTests.js" afterDir="false" />
+    <list default="true" id="7e68dc76-5612-4367-9842-d746373be903" name="Default Changelist" comment="Lesson 12. Storybook, snapshot testing.">
+      <change afterPath="$PROJECT_DIR$/src/api/api.stories.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/api/api.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.storybook/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/.storybook/main.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
     </list>
@@ -18,9 +16,9 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="TypeScript File" />
         <option value="TypeScript JSX File" />
         <option value="JavaScript File" />
+        <option value="TypeScript File" />
       </list>
     </option>
   </component>
@@ -47,7 +45,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/integration" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/api" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="nodejs.jest.jest_package" value="$PROJECT_DIR$/node_modules/react-scripts" />
@@ -58,16 +56,17 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\Incubator\Studying\Monday-Friday\made-by-myself-todolist\src\stories" />
       <recent name="D:\Incubator\Studying\Monday-Friday\made-by-myself-todolist\src\Components\Task" />
       <recent name="D:\Incubator\Studying\Monday-Friday\made-by-myself-todolist\src\Components\Todolist" />
       <recent name="D:\Incubator\Studying\Monday-Friday\made-by-myself-todolist\src" />
       <recent name="D:\Incubator\Studying\Monday-Friday\made-by-myself-todolist\src\Components\EditableSpan" />
-      <recent name="D:\Incubator\Studying\Monday-Friday\made-by-myself-todolist\src\Components\AddItemForm" />
     </key>
     <key name="es6.move.members.recent.items">
       <recent name="D:\Incubator\Studying\Monday\made-by-myself-todolist\01\src\Todolist.tsx" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\Incubator\Studying\Monday-Friday\made-by-myself-todolist\src\api" />
       <recent name="D:\Incubator\Studying\Monday-Friday\made-by-myself-todolist\integration" />
       <recent name="D:\Incubator\Studying\Monday-Friday\made-by-myself-todolist\src\Components\Todolist" />
       <recent name="D:\Incubator\Studying\Monday\made-by-myself-todolist\01\src\Components\" />
@@ -129,9 +128,9 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="npm.storybook" />
         <item itemvalue="npm.test:integration" />
         <item itemvalue="Jest.addItemForm" />
-        <item itemvalue="npm.storybook" />
         <item itemvalue="npm.start" />
         <item itemvalue="npm.test" />
       </list>
@@ -176,7 +175,11 @@
       <workItem from="1642559834095" duration="13887000" />
       <workItem from="1642924156447" duration="6723000" />
       <workItem from="1642932137337" duration="351000" />
-      <workItem from="1642932496186" duration="9681000" />
+      <workItem from="1642932496186" duration="9809000" />
+      <workItem from="1645615004785" duration="841000" />
+      <workItem from="1646651600510" duration="1191000" />
+      <workItem from="1647760360546" duration="4923000" />
+      <workItem from="1647951814230" duration="4326000" />
     </task>
     <task id="LOCAL-00001" summary="Lesson 7. Material UI. Changed all custom components to Material UI.">
       <created>1634021489874</created>
@@ -234,7 +237,14 @@
       <option name="project" value="LOCAL" />
       <updated>1642935535334</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="Lesson 12. Storybook, snapshot testing.">
+      <created>1643002439634</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1643002439634</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -261,6 +271,7 @@
     <MESSAGE value="Lesson 11. React.memo, useCallback." />
     <MESSAGE value="Lesson 11. Refactoring." />
     <MESSAGE value="Lesson 12. Storybook, decorators." />
-    <option name="LAST_COMMIT_MESSAGE" value="Lesson 12. Storybook, decorators." />
+    <MESSAGE value="Lesson 12. Storybook, snapshot testing." />
+    <option name="LAST_COMMIT_MESSAGE" value="Lesson 12. Storybook, snapshot testing." />
   </component>
 </project>
