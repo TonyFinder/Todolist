@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="7e68dc76-5612-4367-9842-d746373be903" name="Default Changelist" comment="Lesson 13. Rest API, axios.">
+    <list default="true" id="7e68dc76-5612-4367-9842-d746373be903" name="Default Changelist" comment="Lesson 13. Rest API, axios. Home task with stories.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/api/api.stories.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/api.stories.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/api/api.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/api.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -176,7 +177,8 @@
       <workItem from="1645615004785" duration="841000" />
       <workItem from="1646651600510" duration="1191000" />
       <workItem from="1647760360546" duration="4923000" />
-      <workItem from="1647951814230" duration="7980000" />
+      <workItem from="1647951814230" duration="8540000" />
+      <workItem from="1647999423424" duration="20400000" />
     </task>
     <task id="LOCAL-00001" summary="Lesson 7. Material UI. Changed all custom components to Material UI.">
       <created>1634021489874</created>
@@ -248,7 +250,14 @@
       <option name="project" value="LOCAL" />
       <updated>1647956224851</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="Lesson 13. Rest API, axios. Home task with stories.">
+      <created>1647997699544</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1647997699544</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -277,6 +286,7 @@
     <MESSAGE value="Lesson 12. Storybook, decorators." />
     <MESSAGE value="Lesson 12. Storybook, snapshot testing." />
     <MESSAGE value="Lesson 13. Rest API, axios." />
-    <option name="LAST_COMMIT_MESSAGE" value="Lesson 13. Rest API, axios." />
+    <MESSAGE value="Lesson 13. Rest API, axios. Home task with stories." />
+    <option name="LAST_COMMIT_MESSAGE" value="Lesson 13. Rest API, axios. Home task with stories." />
   </component>
 </project>
