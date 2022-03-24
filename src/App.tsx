@@ -7,21 +7,6 @@ import {useDispatch, useSelector} from 'react-redux';
 import {addTodolistAC} from './core/reducer-todolist';
 import {AppStateRootType} from './core/store/store';
 
-export type FilterProps = 'All' | 'Active' | 'Completed'
-export type todolistsPropsType = {
-    id: string
-    title: string
-    filter: FilterProps
-}
-export type taskPropsType = {
-    id: string
-    title: string
-    isDone: boolean
-}
-export type tasksPropsType = {
-    [key: string]: taskPropsType[]
-}
-
 export const App = React.memo( () => {
     // console.log("App")
     //Хуки React-Redux

@@ -14,10 +14,10 @@ const Template: ComponentStory<typeof Task> = (args) => <Task {...args} />;
 export const TaskUncompletedBase = Template.bind({});
 TaskUncompletedBase.args = {
   todolistId: "todolistId1",
-  taskId: "2"
+  id: "2"
 };
 export const TaskCompletedBase = Template.bind({});
 TaskCompletedBase.args = {
   todolistId: "todolistId1",
-  taskId: "1"
+  id: "1"
 };

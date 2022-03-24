@@ -1,6 +1,6 @@
-import {tasksPropsType} from '../App';
 import {v1} from 'uuid';
 import {addTodolistAT, removeTodolistAT} from './reducer-todolist';
+import {TaskPriorities, TaskStatuses, TaskType} from '../api/api';
 
 export type removeTaskAT = {
     type: 'REMOVE-TASK'
@@ -15,7 +15,7 @@ export type addTaskAT = {
 export type changeCheckboxAT = {
     type: 'CHANGE-TASK-STATUS'
     id: string
-    checked: boolean
+    checked: number
     todolistId: string
 }
 export type changedTitleTaskAT = {
@@ -26,6 +26,10 @@ export type changedTitleTaskAT = {
 }
 export type tasksActionTypes = removeTaskAT | addTaskAT | changeCheckboxAT | changedTitleTaskAT | removeTodolistAT | addTodolistAT
 
+export type tasksPropsType = {
+    [key: string]: TaskType[]
+}
+
 let initialState: tasksPropsType = {}
 
 export const tasksReducer = (tasks: tasksPropsType = initialState, action: tasksActionTypes): tasksPropsType => {
@@ -33,11 +37,12 @@ export const tasksReducer = (tasks: tasksPropsType = initialState, action: tasks
         case 'REMOVE-TASK':
             return {...tasks, [action.todolistId]: tasks[action.todolistId].filter(task => task.id !== action.taskID)}
         case 'ADD-TASK':
-            return {...tasks, [action.todolistId]: [{id: v1(), title: action.title, isDone: false}, ...tasks[action.todolistId]]}
+            return {...tasks, [action.todolistId]: [{id: v1(), title: action.title, status: TaskStatuses.New, addedDate: "", deadline: "",
+                    description: "", order: 0, priority: TaskPriorities.Low, startDate: "", todolistId: action.todolistId}, ...tasks[action.todolistId]]}
         case 'CHANGE-TASK-STATUS':
-            return {...tasks, [action.todolistId]: tasks[action.todolistId].map(task => task.id === action.id ? {...task, isDone: action.checked} : task)}
+            return {...tasks, [action.todolistId]: tasks[action.todolistId].map(task => task.id === action.id ? {...task, status: action.checked} : task)}
         case 'CHANGE-TASK-TITLE':
-            return {...tasks, [action.todolistId]: tasks[action.todolistId].map(task => task.id === action.taskId ? {...task, term: action.title} : task)}
+            return {...tasks, [action.todolistId]: tasks[action.todolistId].map(task => task.id === action.taskId ? {...task, title: action.title} : task)}
         case 'REMOVE-TODOLIST':
             let newState = {...tasks}
             delete newState[action.todolistId]
@@ -63,7 +68,7 @@ export const addTaskAC = (title: string, todolistId: string): addTaskAT => {
         todolistId: todolistId
     }
 }
-export const changeCheckboxAC = (id: string, checked: boolean, todolistId: string): changeCheckboxAT => {
+export const changeCheckboxAC = (id: string, checked: number, todolistId: string): changeCheckboxAT => {
     return {
         type: 'CHANGE-TASK-STATUS',
         id,

@@ -1,10 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="7e68dc76-5612-4367-9842-d746373be903" name="Default Changelist" comment="Lesson 13. Rest API, axios. Home task with stories.">
+    <list default="true" id="7e68dc76-5612-4367-9842-d746373be903" name="Default Changelist" comment="Lesson 13. Rest API, axios. CRUD for tasks.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/api/api.stories.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/api.stories.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/Task/Task.stories.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Task/Task.stories.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/Task/Task.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Task/Task.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/Todolist/Todolist.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Todolist/Todolist.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/api/api.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/api.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/core/decorator.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/core/decorator.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/core/reducer-tasks.test.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/core/reducer-tasks.test.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/core/reducer-tasks.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/core/reducer-tasks.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/core/reducer-todolist.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/core/reducer-todolist.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -126,11 +133,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="npm.test" />
+        <item itemvalue="npm.start" />
         <item itemvalue="npm.storybook" />
         <item itemvalue="npm.test:integration" />
         <item itemvalue="Jest.addItemForm" />
-        <item itemvalue="npm.start" />
-        <item itemvalue="npm.test" />
       </list>
     </recent_temporary>
   </component>
@@ -178,7 +185,8 @@
       <workItem from="1646651600510" duration="1191000" />
       <workItem from="1647760360546" duration="4923000" />
       <workItem from="1647951814230" duration="8540000" />
-      <workItem from="1647999423424" duration="20400000" />
+      <workItem from="1647999423424" duration="20475000" />
+      <workItem from="1648085335474" duration="8721000" />
     </task>
     <task id="LOCAL-00001" summary="Lesson 7. Material UI. Changed all custom components to Material UI.">
       <created>1634021489874</created>
@@ -257,7 +265,14 @@
       <option name="project" value="LOCAL" />
       <updated>1647997699544</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="Lesson 13. Rest API, axios. CRUD for tasks.">
+      <created>1648034353158</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1648034353158</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -287,6 +302,7 @@
     <MESSAGE value="Lesson 12. Storybook, snapshot testing." />
     <MESSAGE value="Lesson 13. Rest API, axios." />
     <MESSAGE value="Lesson 13. Rest API, axios. Home task with stories." />
-    <option name="LAST_COMMIT_MESSAGE" value="Lesson 13. Rest API, axios. Home task with stories." />
+    <MESSAGE value="Lesson 13. Rest API, axios. CRUD for tasks." />
+    <option name="LAST_COMMIT_MESSAGE" value="Lesson 13. Rest API, axios. CRUD for tasks." />
   </component>
 </project>

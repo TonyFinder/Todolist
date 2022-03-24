@@ -1,14 +1,20 @@
 import {Button, IconButton, List} from '@material-ui/core';
 import React, {useCallback} from 'react';
-import {FilterProps, taskPropsType, todolistsPropsType} from '../../App';
 import {AddItemForm} from '../AddItemForm/AddItemForm';
 import {EditableSpan} from '../EditableSpan/EditableSpan';
 import {DeleteForeverTwoTone} from '@material-ui/icons';
 import {useDispatch, useSelector} from 'react-redux';
 import {AppStateRootType} from '../../core/store/store';
 import {addTaskAC} from '../../core/reducer-tasks';
-import {changeTodolistTitleAC, filterTaskAC, removeTodolistAC} from '../../core/reducer-todolist';
+import {
+    changeTodolistTitleAC,
+    FilterProps,
+    filterTaskAC,
+    removeTodolistAC,
+    TodolistStateType
+} from '../../core/reducer-todolist';
 import {Task} from '../Task/Task';
+import {TaskStatuses, TaskType} from '../../api/api';
 
 type TodolistPropsType = {todolistId: string}
 
@@ -16,15 +22,15 @@ export const Todolist = React.memo( ({todolistId}: TodolistPropsType) => {
     // console.log("Todolist")
     //Хуки react-redux
     let dispatch = useDispatch()
-    let todolist = useSelector<AppStateRootType, todolistsPropsType>(state => state.todolists.filter(f => f.id === todolistId)[0])
-    let tasks = useSelector<AppStateRootType, taskPropsType[]>(state => state.tasks[todolistId])
+    let todolist = useSelector<AppStateRootType, TodolistStateType>(state => state.todolists.filter(f => f.id === todolistId)[0])
+    let tasks = useSelector<AppStateRootType, TaskType[]>(state => state.tasks[todolistId])
 
     //Фильтрация тасков
     todolist.filter === 'Active'
-        ? tasks = tasks.filter(f => !f.isDone)
+        ? tasks = tasks.filter(f => !(f.status === TaskStatuses.Completed))
         :
         todolist.filter === 'Completed'
-            ? tasks = tasks.filter(f => f.isDone)
+            ? tasks = tasks.filter(f => f.status === TaskStatuses.Completed)
             : tasks = [...tasks]
 
     //Работа с тасками
@@ -53,7 +59,7 @@ export const Todolist = React.memo( ({todolistId}: TodolistPropsType) => {
                         size={'small'} onClick={() => filterTasks('Completed')}>Completed</Button>
             </div>
             <List>
-                {tasks.map(mf => <Task key={mf.id} taskId={mf.id} todolistId={todolistId}/>)}
+                {tasks.map(mf => <Task key={mf.id} id={mf.id} todolistId={todolistId}/>)}
             </List>
         </div>
     )
