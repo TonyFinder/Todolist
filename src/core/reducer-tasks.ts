@@ -1,34 +1,6 @@
 import {v1} from 'uuid';
-import {addTodolistAT, removeTodolistAT} from './reducer-todolist';
+import {AddTodolistAT, RemoveTodolistAT} from './reducer-todolist';
 import {TaskPriorities, TaskStatuses, TaskType} from '../api/api';
-
-export type removeTaskAT = {
-    type: 'REMOVE-TASK'
-    taskID: string
-    todolistId: string
-}
-export type addTaskAT = {
-    type: 'ADD-TASK'
-    title: string
-    todolistId: string
-}
-export type changeCheckboxAT = {
-    type: 'CHANGE-TASK-STATUS'
-    id: string
-    checked: number
-    todolistId: string
-}
-export type changedTitleTaskAT = {
-    type: 'CHANGE-TASK-TITLE'
-    title: string
-    todolistId: string
-    taskId: string
-}
-export type tasksActionTypes = removeTaskAT | addTaskAT | changeCheckboxAT | changedTitleTaskAT | removeTodolistAT | addTodolistAT
-
-export type tasksPropsType = {
-    [key: string]: TaskType[]
-}
 
 let initialState: tasksPropsType = {}
 
@@ -54,33 +26,19 @@ export const tasksReducer = (tasks: tasksPropsType = initialState, action: tasks
     }
 }
 
-export const removeTaskAC = (taskID: string, todolistId: string): removeTaskAT => {
-    return {
-        type: 'REMOVE-TASK',
-        taskID,
-        todolistId: todolistId
-    }
-}
-export const addTaskAC = (title: string, todolistId: string): addTaskAT => {
-    return {
-        type: 'ADD-TASK',
-        title,
-        todolistId: todolistId
-    }
-}
-export const changeCheckboxAC = (id: string, checked: number, todolistId: string): changeCheckboxAT => {
-    return {
-        type: 'CHANGE-TASK-STATUS',
-        id,
-        checked,
-        todolistId: todolistId
-    }
-}
-export const changedTitleTaskAC = (title: string, todolistId: string, taskId: string): changedTitleTaskAT => {
-    return {
-        type: 'CHANGE-TASK-TITLE',
-        title,
-        todolistId: todolistId,
-        taskId
-    }
-}
+// actions
+export const removeTaskAC = (taskID: string, todolistId: string) => ({type: 'REMOVE-TASK', taskID, todolistId} as const)
+export const addTaskAC = (title: string, todolistId: string) => ({type: 'ADD-TASK', title, todolistId} as const)
+export const changeCheckboxAC = (id: string, checked: number, todolistId: string) => ({type: 'CHANGE-TASK-STATUS', id, checked, todolistId} as const)
+export const changedTitleTaskAC = (title: string, todolistId: string, taskId: string) => ({type: 'CHANGE-TASK-TITLE', title, todolistId, taskId} as const)
+
+// types
+export type tasksActionTypes =
+    | ReturnType<typeof removeTaskAC>
+    | ReturnType<typeof addTaskAC>
+    | ReturnType<typeof changeCheckboxAC>
+    | ReturnType<typeof changedTitleTaskAC>
+    | RemoveTodolistAT
+    | AddTodolistAT
+
+export type tasksPropsType = {[key: string]: TaskType[]}

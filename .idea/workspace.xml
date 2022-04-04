@@ -1,15 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="7e68dc76-5612-4367-9842-d746373be903" name="Default Changelist" comment="Lesson 13. Rest API, axios. CRUD for tasks.">
+    <list default="true" id="7e68dc76-5612-4367-9842-d746373be903" name="Default Changelist" comment="Lesson 13. Refactoring: importing types from API.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/Task/Task.stories.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Task/Task.stories.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/Task/Task.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Task/Task.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/Todolist/Todolist.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Todolist/Todolist.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/api/api.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/api.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/core/decorator.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/core/decorator.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/core/reducer-tasks.test.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/core/reducer-tasks.test.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/core/reducer-tasks.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/core/reducer-tasks.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/core/reducer-todolist.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/core/reducer-todolist.ts" afterDir="false" />
     </list>
@@ -50,7 +43,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/api" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="nodejs.jest.jest_package" value="$PROJECT_DIR$/node_modules/react-scripts" />
@@ -186,7 +179,10 @@
       <workItem from="1647760360546" duration="4923000" />
       <workItem from="1647951814230" duration="8540000" />
       <workItem from="1647999423424" duration="20475000" />
-      <workItem from="1648085335474" duration="8721000" />
+      <workItem from="1648085335474" duration="8921000" />
+      <workItem from="1648214013161" duration="1269000" />
+      <workItem from="1648374462147" duration="1443000" />
+      <workItem from="1649032467335" duration="1640000" />
     </task>
     <task id="LOCAL-00001" summary="Lesson 7. Material UI. Changed all custom components to Material UI.">
       <created>1634021489874</created>
@@ -272,7 +268,14 @@
       <option name="project" value="LOCAL" />
       <updated>1648034353158</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="Lesson 13. Refactoring: importing types from API.">
+      <created>1648095427309</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1648095427309</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -303,6 +306,7 @@
     <MESSAGE value="Lesson 13. Rest API, axios." />
     <MESSAGE value="Lesson 13. Rest API, axios. Home task with stories." />
     <MESSAGE value="Lesson 13. Rest API, axios. CRUD for tasks." />
-    <option name="LAST_COMMIT_MESSAGE" value="Lesson 13. Rest API, axios. CRUD for tasks." />
+    <MESSAGE value="Lesson 13. Refactoring: importing types from API." />
+    <option name="LAST_COMMIT_MESSAGE" value="Lesson 13. Refactoring: importing types from API." />
   </component>
 </project>
