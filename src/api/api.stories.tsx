@@ -236,7 +236,6 @@ export const UpdateTaskStory = () => {
     const [updateObject, setUpdateObject] = useState<TaskUpdateType>({
         title: '',
         description: '',
-        completed: false,
         status: 0,
         priority: 0,
         startDate: '',
@@ -245,7 +244,6 @@ export const UpdateTaskStory = () => {
     const [updateObjectToSet, setUpdateObjectToSet] = useState<TaskUpdateType>({
         title: '',
         description: '',
-        completed: false,
         status: 0,
         priority: 0,
         startDate: '',

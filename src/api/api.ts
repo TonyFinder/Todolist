@@ -7,10 +7,11 @@ export type TodolistType = {
     title: string
 }
 type BaseTodolistResponseType<T = {}> = {
-    data: T
     fieldsErrors: []
     messages: []
     resultCode: 0
+    data: {
+        data: T}
 }
 
 export enum TaskStatuses {
@@ -42,9 +43,8 @@ export type TaskType = {
 export type TaskUpdateType = {
     title: string
     description: string
-    completed: boolean
-    status: number
-    priority: number
+    status: TaskStatuses
+    priority: TaskPriorities
     startDate: string
     deadline: string
 }
@@ -57,7 +57,8 @@ type BaseResponseTasksType<T = {}> = {
     resultCode: number
     messages: string[],
     fieldsErrors: string[]
-    data: T
+    data: {
+        data: T}
 }
 
 
