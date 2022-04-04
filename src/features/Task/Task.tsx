@@ -1,10 +1,10 @@
 import React, {useCallback} from 'react';
-import {changeCheckboxTC, changedTitleTaskTC, removeTaskTC} from '../../core/reducer-tasks';
+import {removeTaskTC, updateTaskTC} from '../reducer-tasks';
 import {Checkbox, IconButton, ListItem} from '@material-ui/core';
 import {DeleteTwoTone} from '@material-ui/icons';
-import {EditableSpan} from '../EditableSpan/EditableSpan';
+import {EditableSpan} from '../../Components/EditableSpan/EditableSpan';
 import {useDispatch, useSelector} from 'react-redux';
-import {AppStateRootType} from '../../core/store/store';
+import {AppStateRootType} from '../../app/store';
 import {TaskStatuses, TaskType} from '../../api/api';
 
 type TaskPropsType = {
@@ -14,12 +14,13 @@ type TaskPropsType = {
 
 export const Task = React.memo( ({id, todolistId}: TaskPropsType) => {
     console.log("Task")
+
     const task = useSelector<AppStateRootType, TaskType>(state => state.tasks[todolistId].filter(f => f.id === id)[0])
     const dispatch = useDispatch()
 
-    const changedTitleTask = useCallback( (title: string) => dispatch(changedTitleTaskTC(title, todolistId, task.id)), [dispatch, todolistId, task.id])
-    const changeTaskCheckbox = useCallback( (id: string, event: boolean) => dispatch(changeCheckboxTC(id, event ? TaskStatuses.Completed : TaskStatuses.New, todolistId)), [dispatch, todolistId])
-    const removeTask = useCallback( (id: string) => dispatch(removeTaskTC(id, todolistId)), [dispatch, todolistId])
+    const changeTaskTitle = useCallback( (title: string) => dispatch(updateTaskTC(todolistId, task.id, {title})), [dispatch, todolistId, task.id])
+    const changeTaskCheckbox = useCallback( (taskId: string, event: boolean) => dispatch(updateTaskTC(todolistId, taskId, event ? {status: TaskStatuses.Completed} : {status: TaskStatuses.New})), [dispatch, todolistId])
+    const removeTask = useCallback( (taskId: string) => dispatch(removeTaskTC(taskId, todolistId)), [dispatch, todolistId])
 
     return (
         <ListItem style={{padding: '0px'}}>
@@ -28,7 +29,7 @@ export const Task = React.memo( ({id, todolistId}: TaskPropsType) => {
             </IconButton>
             <Checkbox size={'small'} color={'primary'}
                       onChange={(event) => changeTaskCheckbox(task.id, event.currentTarget.checked)} checked={task.status === TaskStatuses.Completed}/>
-            <EditableSpan titleMain={task.title} changedTitle={changedTitleTask} completed={task.status === TaskStatuses.Completed}
+            <EditableSpan titleMain={task.title} changedTitle={changeTaskTitle} completed={task.status === TaskStatuses.Completed}
                           header={false}/>
         </ListItem>
     )

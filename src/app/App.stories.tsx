@@ -1,7 +1,7 @@
 import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import {App} from './App';
-import {decoratorHOC} from './core/decorator';
+import {decoratorHOC} from '../features/decorator';
 
 export default {
   title: 'TODOLIST/APP',

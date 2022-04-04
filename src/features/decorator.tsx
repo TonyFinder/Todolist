@@ -1,6 +1,6 @@
 import React from 'react';
 import {Provider} from 'react-redux';
-import {AppStateRootType} from './store/store';
+import {AppStateRootType} from '../app/store';
 import {combineReducers, createStore} from 'redux';
 import {tasksReducer} from './reducer-tasks';
 import {todolistsReducer} from './reducer-todolist';

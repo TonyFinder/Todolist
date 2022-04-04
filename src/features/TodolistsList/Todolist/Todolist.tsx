@@ -1,20 +1,20 @@
 import {Button, IconButton, List} from '@material-ui/core';
 import React, {useCallback, useEffect} from 'react';
-import {AddItemForm} from '../AddItemForm/AddItemForm';
-import {EditableSpan} from '../EditableSpan/EditableSpan';
+import {AddItemForm} from '../../../Components/AddItemForm/AddItemForm';
+import {EditableSpan} from '../../../Components/EditableSpan/EditableSpan';
 import {DeleteForeverTwoTone} from '@material-ui/icons';
 import {useDispatch, useSelector} from 'react-redux';
-import {AppStateRootType} from '../../core/store/store';
-import {addTaskTC, setTasksTC} from '../../core/reducer-tasks';
+import {AppStateRootType} from '../../../app/store';
+import {addTaskTC, setTasksTC} from '../../reducer-tasks';
 import {
     changeTodolistTitleTC,
     FilterProps,
     filterTaskAC,
     removeTodolistTC,
     TodolistStateType
-} from '../../core/reducer-todolist';
-import {Task} from '../Task/Task';
-import {TaskStatuses, TaskType} from '../../api/api';
+} from '../../reducer-todolist';
+import {Task} from '../../Task/Task';
+import {TaskStatuses, TaskType} from '../../../api/api';
 
 type TodolistPropsType = {todolistId: string}
 
@@ -26,7 +26,6 @@ export const Todolist = React.memo( ({todolistId}: TodolistPropsType) => {
         // eslint-disable-next-line
     },[])
 
-    //Хуки react-redux
     let dispatch = useDispatch()
     let todolist = useSelector<AppStateRootType, TodolistStateType>(state => state.todolists.filter(f => f.id === todolistId)[0])
     let tasks = useSelector<AppStateRootType, TaskType[]>(state => state.tasks[todolistId])

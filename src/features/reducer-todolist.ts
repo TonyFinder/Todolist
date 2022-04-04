@@ -3,7 +3,7 @@ import {Dispatch} from 'redux';
 
 let initialState: TodolistStateType[] = []
 
-export const todolistsReducer = (todolists: TodolistStateType[] = initialState, action: todolistActionTypes): TodolistStateType[] => {
+export const todolistsReducer = (todolists: TodolistStateType[] = initialState, action: TodolistActionTypes): TodolistStateType[] => {
     switch (action.type) {
         case 'SET-TODOLISTS':
             return action.todolists.map(t => ({...t, filter: 'All'}))
@@ -46,7 +46,7 @@ export const removeTodolistTC = (todolistId: string) => (dispatch: Dispatch) => 
 }
 
 // types
-export type todolistActionTypes =
+export type TodolistActionTypes =
     | SetTodolistsAT
     | AddTodolistAT
     | ReturnType<typeof filterTaskAC>

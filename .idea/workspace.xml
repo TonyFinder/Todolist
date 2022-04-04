@@ -1,18 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="7e68dc76-5612-4367-9842-d746373be903" name="Default Changelist" comment="Lesson 14. Refactoring for reducers.">
+    <list default="true" id="7e68dc76-5612-4367-9842-d746373be903" name="Default Changelist" comment="Lesson 14. Creating thunks for all the actions.">
+      <change afterPath="$PROJECT_DIR$/src/app/App.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/features/TodolistsList/TodolistsList.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/features/reducer-tasks.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/Task/Task.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Task/Task.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/Todolist/Todolist.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Todolist/Todolist.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/api/api.stories.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/api.stories.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.stories.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/App.stories.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/Task/Task.stories.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/Task/Task.stories.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/Task/Task.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/Task/Task.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/Todolist/Todolist.stories.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/TodolistsList/Todolist/Todolist.stories.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/Todolist/Todolist.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/TodolistsList/Todolist/Todolist.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/api/api.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/api.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/core/reducer-tasks.test.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/core/reducer-tasks.test.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/core/reducer-tasks.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/core/reducer-tasks.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/core/reducer-todolist.test.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/core/reducer-todolist.test.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/core/reducer-todolist.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/core/reducer-todolist.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/core/store/store.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/core/store/store.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/core/decorator.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/decorator.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/core/reducer-tasks.test.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/reducer-tasks.test.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/core/reducer-tasks.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/core/reducer-todolist.test.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/reducer-todolist.test.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/core/reducer-todolist.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/reducer-todolist.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/core/store/store.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/store.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -22,9 +29,9 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="TypeScript JSX File" />
         <option value="JavaScript File" />
         <option value="TypeScript File" />
+        <option value="TypeScript JSX File" />
       </list>
     </option>
   </component>
@@ -72,10 +79,11 @@
       <recent name="D:\Incubator\Studying\Monday\made-by-myself-todolist\01\src\Todolist.tsx" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="D:\Incubator\Studying\Monday-Friday\made-by-myself-todolist\src\api" />
-      <recent name="D:\Incubator\Studying\Monday-Friday\made-by-myself-todolist\integration" />
-      <recent name="D:\Incubator\Studying\Monday-Friday\made-by-myself-todolist\src\Components\Todolist" />
-      <recent name="D:\Incubator\Studying\Monday\made-by-myself-todolist\01\src\Components\" />
+      <recent name="D:\Incubator\Studying\Monday-Friday\made-by-myself-todolist\src\features" />
+      <recent name="D:\Incubator\Studying\Monday-Friday\made-by-myself-todolist\src\app" />
+      <recent name="D:\Incubator\Studying\Monday-Friday\made-by-myself-todolist\src\features\Task" />
+      <recent name="D:\Incubator\Studying\Monday-Friday\made-by-myself-todolist\src\features\TodolistsList\Todolist\Task" />
+      <recent name="D:\Incubator\Studying\Monday-Friday\made-by-myself-todolist\src\features\TodolistsList\Todolist" />
     </key>
   </component>
   <component name="RunManager" selected="Jest.addItemForm">
@@ -135,8 +143,8 @@
     <recent_temporary>
       <list>
         <item itemvalue="npm.start" />
-        <item itemvalue="npm.storybook" />
         <item itemvalue="npm.test" />
+        <item itemvalue="npm.storybook" />
         <item itemvalue="npm.test:integration" />
         <item itemvalue="Jest.addItemForm" />
       </list>
@@ -190,7 +198,7 @@
       <workItem from="1648085335474" duration="8921000" />
       <workItem from="1648214013161" duration="1269000" />
       <workItem from="1648374462147" duration="1443000" />
-      <workItem from="1649032467335" duration="20841000" />
+      <workItem from="1649032467335" duration="32640000" />
     </task>
     <task id="LOCAL-00001" summary="Lesson 7. Material UI. Changed all custom components to Material UI.">
       <created>1634021489874</created>
@@ -290,7 +298,14 @@
       <option name="project" value="LOCAL" />
       <updated>1649034173470</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="Lesson 14. Creating thunks for all the actions.">
+      <created>1649058961316</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1649058961316</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -323,6 +338,7 @@
     <MESSAGE value="Lesson 13. Rest API, axios. CRUD for tasks." />
     <MESSAGE value="Lesson 13. Refactoring: importing types from API." />
     <MESSAGE value="Lesson 14. Refactoring for reducers." />
-    <option name="LAST_COMMIT_MESSAGE" value="Lesson 14. Refactoring for reducers." />
+    <MESSAGE value="Lesson 14. Creating thunks for all the actions." />
+    <option name="LAST_COMMIT_MESSAGE" value="Lesson 14. Creating thunks for all the actions." />
   </component>
 </project>

@@ -1,14 +1,14 @@
 import {
     addTaskAC,
-    changeCheckboxAC,
-    changedTitleTaskAC,
     removeTaskAC,
     setTasksAC,
-    tasksPropsType,
-    tasksReducer
+    TasksPropsType,
+    tasksReducer,
+    TaskUpdateDomainType,
+    updateTaskAC
 } from './reducer-tasks';
 import {addTodolistAC, removeTodolistAC, setTodolistsAC, todolistsReducer, TodolistStateType} from './reducer-todolist';
-import {TaskPriorities, TaskStatuses, TaskUpdateType, TodolistType} from '../api/api';
+import {TaskPriorities, TaskStatuses, TodolistType} from '../api/api';
 
 //Можно обойтись без использования beforeEach и в теле объявить все переменные, так как редьюсеры не меняют входящие данные.
 //Использовал два разных подхода в тестах для todolist и tasks
@@ -16,7 +16,7 @@ let todolists: Array<TodolistStateType> = [
     {id: "toDoList_1", title: "What to learn", filter: "All", order: 0, addedDate: ""},
     {id: "toDoList_2", title: "What to buy", filter: "All", order: 0, addedDate: ""}
 ]
-let tasks: tasksPropsType = {
+let tasks: TasksPropsType = {
     ['toDoList_1']: [
         {id: '1', title: 'HTML&CSS', status: TaskStatuses.Completed, todolistId: 'toDoList_1', order: 0,
             startDate: "", addedDate: "", priority: TaskPriorities.Low, deadline: "", description: ""},
@@ -37,7 +37,7 @@ let tasks: tasksPropsType = {
 
 test('task should be removed', () => {
     const action = removeTaskAC('2', 'toDoList_1')
-    const endTasks: tasksPropsType = tasksReducer(tasks, action)
+    const endTasks: TasksPropsType = tasksReducer(tasks, action)
 
     expect(endTasks).toEqual({
         ['toDoList_1']: [
@@ -79,15 +79,10 @@ test('new task have to be added', () => {
     expect(newTasks['toDoList_2'].length).toBe(4)
 })
 test('change status of the task', () => {
-    const obj: TaskUpdateType = {
-        title: 'Soap',
-        description: "",
-        deadline: "",
-        priority: TaskPriorities.Low,
-        startDate: "",
+    const obj: TaskUpdateDomainType = {
         status: TaskStatuses.Completed
     }
-    const action = changeCheckboxAC('3', obj, 'toDoList_2')
+    const action = updateTaskAC('3', 'toDoList_2', obj)
     const endTasks = tasksReducer(tasks, action)
 
     expect(endTasks['toDoList_2'][2].status).toBe(TaskStatuses.Completed)
@@ -111,15 +106,10 @@ test('change status of the task', () => {
     })
 })
 test('change title for the task', () => {
-    let obj: TaskUpdateType = {
-        title: 'Kefirok',
-        description: "",
-        deadline: "",
-        status: TaskStatuses.Completed,
-        priority: TaskPriorities.Low,
-        startDate: ""
+    let obj: TaskUpdateDomainType = {
+        title: 'Kefirok'
     }
-    const action = changedTitleTaskAC(obj, "toDoList_2", "2")
+    const action = updateTaskAC("2",  "toDoList_2", obj)
     const endTasks = tasksReducer(tasks, action)
 
     expect(endTasks).toEqual({
@@ -195,7 +185,7 @@ test('set todolists', () => {
     })
 })
 test('set tasks', () => {
-    let state: tasksPropsType = {
+    let state: TasksPropsType = {
         'toDoList_1': []
     }
     let tasks = [
@@ -207,7 +197,7 @@ test('set tasks', () => {
             startDate: "", addedDate: "", priority: TaskPriorities.Low, deadline: "", description: ""}
     ]
 
-    let endState: tasksPropsType = tasksReducer(state, setTasksAC('toDoList_1', tasks))
+    let endState: TasksPropsType = tasksReducer(state, setTasksAC('toDoList_1', tasks))
 
     expect(state).toEqual({
         'toDoList_1': []
