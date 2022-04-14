@@ -1,10 +1,12 @@
-import {Container, Grid, Paper} from '@material-ui/core';
-import {AddItemForm} from '../../Components/AddItemForm/AddItemForm';
+import {AddItemForm} from '../../components/AddItemForm/AddItemForm';
 import React, {useCallback, useEffect} from 'react';
 import {addTodolistTC, setTodolistsTC} from '../reducer-todolist';
 import {useDispatch, useSelector} from 'react-redux';
 import {AppStateRootType} from '../../app/store';
 import {Todolist} from './Todolist/Todolist';
+import Container from '@mui/material/Container';
+import Grid from '@mui/material/Grid';
+import Paper from '@mui/material/Paper';
 
 export const TodolistsList = React.memo(() => {
     console.log("TodolistsList")

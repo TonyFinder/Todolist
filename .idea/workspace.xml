@@ -1,25 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="7e68dc76-5612-4367-9842-d746373be903" name="Default Changelist" comment="Lesson 14. Creating thunks for all the actions.">
-      <change afterPath="$PROJECT_DIR$/src/app/App.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/features/TodolistsList/TodolistsList.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/features/reducer-tasks.ts" afterDir="false" />
+    <list default="true" id="7e68dc76-5612-4367-9842-d746373be903" name="Default Changelist" comment="Lesson 14. Refactoring.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.stories.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/App.stories.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/Task/Task.stories.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/Task/Task.stories.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/Task/Task.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/Task/Task.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/Todolist/Todolist.stories.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/TodolistsList/Todolist/Todolist.stories.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/Todolist/Todolist.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/TodolistsList/Todolist/Todolist.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/api/api.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/api.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/core/decorator.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/decorator.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/core/reducer-tasks.test.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/reducer-tasks.test.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/core/reducer-tasks.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/core/reducer-todolist.test.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/reducer-todolist.test.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/core/reducer-todolist.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/reducer-todolist.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/core/store/store.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/store.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/App.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/AddItemForm/AddItemForm.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/AddItemForm/AddItemForm.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/EditableSpan/EditableSpan.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/EditableSpan/EditableSpan.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/features/Task/Task.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/Task/Task.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/features/TodolistsList/Todolist/Todolist.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/TodolistsList/Todolist/Todolist.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/features/TodolistsList/TodolistsList.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/TodolistsList/TodolistsList.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -198,7 +189,10 @@
       <workItem from="1648085335474" duration="8921000" />
       <workItem from="1648214013161" duration="1269000" />
       <workItem from="1648374462147" duration="1443000" />
-      <workItem from="1649032467335" duration="32640000" />
+      <workItem from="1649032467335" duration="33259000" />
+      <workItem from="1649939926504" duration="416000" />
+      <workItem from="1649940355089" duration="1168000" />
+      <workItem from="1649941536473" duration="1808000" />
     </task>
     <task id="LOCAL-00001" summary="Lesson 7. Material UI. Changed all custom components to Material UI.">
       <created>1634021489874</created>
@@ -305,7 +299,14 @@
       <option name="project" value="LOCAL" />
       <updated>1649058961316</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="Lesson 14. Refactoring.">
+      <created>1649074110318</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1649074110318</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -339,6 +340,7 @@
     <MESSAGE value="Lesson 13. Refactoring: importing types from API." />
     <MESSAGE value="Lesson 14. Refactoring for reducers." />
     <MESSAGE value="Lesson 14. Creating thunks for all the actions." />
-    <option name="LAST_COMMIT_MESSAGE" value="Lesson 14. Creating thunks for all the actions." />
+    <MESSAGE value="Lesson 14. Refactoring." />
+    <option name="LAST_COMMIT_MESSAGE" value="Lesson 14. Refactoring." />
   </component>
 </project>

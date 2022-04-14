@@ -1,6 +1,7 @@
 import React, {useCallback, useState} from 'react';
-import {IconButton, TextField} from '@material-ui/core';
-import {AddCircleTwoTone} from '@material-ui/icons';
+import TextField from '@mui/material/TextField';
+import IconButton from '@mui/material/IconButton';
+import AddCircleTwoTone from '@mui/icons-material/AddCircleTwoTone';
 
 export type AddItemFormPropsType = {
     addItem: (inputTextValue: string) => void

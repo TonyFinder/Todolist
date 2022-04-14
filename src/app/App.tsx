@@ -1,7 +1,11 @@
 import React from 'react';
-import {AppBar, Button, IconButton, Toolbar, Typography} from '@material-ui/core';
-import {Menu} from '@material-ui/icons';
 import {TodolistsList} from '../features/TodolistsList/TodolistsList';
+import AppBar from '@mui/material/AppBar';
+import Button from '@mui/material/Button';
+import Toolbar from '@mui/material/Toolbar';
+import IconButton from '@mui/material/IconButton';
+import Typography from '@mui/material/Typography';
+import Menu from '@mui/icons-material/Menu';
 
 export const App = React.memo( () => {
     console.log("App")

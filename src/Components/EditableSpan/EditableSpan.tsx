@@ -1,5 +1,6 @@
 import React, {ChangeEvent, KeyboardEvent, useCallback, useState} from 'react'
-import {TextField, Typography} from '@material-ui/core';
+import TextField from '@mui/material/TextField';
+import Typography from '@mui/material/Typography';
 
 type EditableSpanPropsType = {
     titleMain: string

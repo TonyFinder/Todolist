@@ -1,20 +1,17 @@
-import {Button, IconButton, List} from '@material-ui/core';
 import React, {useCallback, useEffect} from 'react';
-import {AddItemForm} from '../../../Components/AddItemForm/AddItemForm';
-import {EditableSpan} from '../../../Components/EditableSpan/EditableSpan';
-import {DeleteForeverTwoTone} from '@material-ui/icons';
+import {AddItemForm} from '../../../components/AddItemForm/AddItemForm';
+import {EditableSpan} from '../../../components/EditableSpan/EditableSpan';
 import {useDispatch, useSelector} from 'react-redux';
 import {AppStateRootType} from '../../../app/store';
 import {addTaskTC, setTasksTC} from '../../reducer-tasks';
-import {
-    changeTodolistTitleTC,
-    FilterProps,
-    filterTaskAC,
-    removeTodolistTC,
-    TodolistStateType
-} from '../../reducer-todolist';
+import {changeTodolistTitleTC, FilterProps, filterTaskAC, removeTodolistTC, TodolistStateType} from '../../reducer-todolist';
 import {Task} from '../../Task/Task';
 import {TaskStatuses, TaskType} from '../../../api/api';
+import IconButton from '@mui/material/IconButton';
+import Button from '@mui/material/Button';
+import List from '@mui/material/List';
+import DeleteForeverTwoTone from '@mui/icons-material/DeleteForeverTwoTone';
+
 
 type TodolistPropsType = {todolistId: string}
 

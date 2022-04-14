@@ -1,11 +1,16 @@
 import React, {useCallback} from 'react';
 import {removeTaskTC, updateTaskTC} from '../reducer-tasks';
-import {Checkbox, IconButton, ListItem} from '@material-ui/core';
-import {DeleteTwoTone} from '@material-ui/icons';
-import {EditableSpan} from '../../Components/EditableSpan/EditableSpan';
+import {EditableSpan} from '../../components/EditableSpan/EditableSpan';
 import {useDispatch, useSelector} from 'react-redux';
 import {AppStateRootType} from '../../app/store';
 import {TaskStatuses, TaskType} from '../../api/api';
+import ListItem from '@mui/material/ListItem';
+import IconButton from '@mui/material/IconButton';
+import DeleteTwoTone from '@mui/icons-material/DeleteTwoTone';
+import Checkbox from '@mui/material/Checkbox';
+
+
+
 
 type TaskPropsType = {
     id: string
