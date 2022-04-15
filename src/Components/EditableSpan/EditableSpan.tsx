@@ -10,7 +10,8 @@ type EditableSpanPropsType = {
 }
 
 export const EditableSpan = React.memo( ({header, completed, changedTitle, titleMain}: EditableSpanPropsType) => {
-    // console.log("EditableSpan")
+    console.log("EditableSpan")
+
     //Хуки React
     let [title, setTitle] = useState(titleMain)
     let [inputActive, setInputActive] = useState(false)

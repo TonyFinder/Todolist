@@ -1,5 +1,7 @@
 import {todolistsAPI, TodolistType} from '../api/api';
 import {Dispatch} from 'redux';
+import {AppActionType, changeAppErrorValue, changeAppLoadingStatus} from './app-reducer';
+import {AxiosError} from 'axios';
 
 let initialState: TodolistStateType[] = []
 
@@ -23,26 +25,60 @@ export const todolistsReducer = (todolists: TodolistStateType[] = initialState, 
 // actions
 export const setTodolistsAC = (todolists: TodolistType[]) => ({type: 'SET-TODOLISTS', todolists} as const)
 export const addTodolistAC = (todolist: TodolistType) => ({type: 'ADD-TODOLIST', todolist} as const)
-export const filterTaskAC = (filterId: FilterProps, todolistId: string) => ({type: 'CHANGE-TODOLIST-FILTER', todolistId, filterId} as const)
-export const changeTodolistTitleAC = (title: string, todolistId: string) => ({type: 'CHANGE-TODOLIST-TITLE', todolistId, title} as const)
+export const filterTaskAC = (filterId: FilterProps, todolistId: string) => (
+    {type: 'CHANGE-TODOLIST-FILTER', todolistId, filterId} as const)
+export const changeTodolistTitleAC = (title: string, todolistId: string) => (
+    {type: 'CHANGE-TODOLIST-TITLE', todolistId, title} as const)
 export const removeTodolistAC = (todolistId: string) => ({type: 'REMOVE-TODOLIST', todolistId} as const)
 
 // thunks
-export const setTodolistsTC = () => (dispatch: Dispatch) => {
+export const setTodolistsTC = () => (dispatch: Dispatch<TodolistActionTypes>) => {
+    dispatch(changeAppLoadingStatus('loading'))
     todolistsAPI.getTodolists()
-        .then(res => dispatch(setTodolistsAC(res.data)))
+        .then(res => {
+            dispatch(setTodolistsAC(res.data))
+        })
+        .catch((err: AxiosError) => dispatch(changeAppErrorValue(err.message)))
+        .finally(()=> dispatch(changeAppLoadingStatus('succeeded')))
 }
-export const addTodolistTC = (title: string) => (dispatch: Dispatch) => {
+export const addTodolistTC = (title: string) => (dispatch: Dispatch<TodolistActionTypes>) => {
+    dispatch(changeAppLoadingStatus('loading'))
     todolistsAPI.createTodolist(title)
-        .then(res => dispatch(addTodolistAC(res.data.data.item)))
+        .then(res => {
+            if (res.data.resultCode === 0) {
+                dispatch(addTodolistAC(res.data.data.item))
+            } else {
+                dispatch(changeAppErrorValue(res.data.messages ? res.data.messages[0] : "Some error is occurred"))
+            }
+        })
+        .catch((err: AxiosError) => dispatch(changeAppErrorValue(err.message)))
+        .finally(()=> dispatch(changeAppLoadingStatus('succeeded')))
 }
-export const changeTodolistTitleTC = (title: string, todolistId: string) => (dispatch: Dispatch) => {
+export const changeTodolistTitleTC = (title: string, todolistId: string) => (dispatch: Dispatch<TodolistActionTypes>) => {
+    dispatch(changeAppLoadingStatus('loading'))
     todolistsAPI.updateTodolist(todolistId, title)
-        .then(res => dispatch(changeTodolistTitleAC(title, todolistId)))
+        .then(res => {
+            if (res.data.resultCode === 0) {
+                dispatch(changeTodolistTitleAC(title, todolistId))
+            } else {
+                dispatch(changeAppErrorValue(res.data.messages ? res.data.messages[0] : "Some error is occurred"))
+            }
+        })
+        .catch((err: AxiosError) => dispatch(changeAppErrorValue(err.message)))
+        .finally(()=> dispatch(changeAppLoadingStatus('succeeded')))
 }
-export const removeTodolistTC = (todolistId: string) => (dispatch: Dispatch) => {
+export const removeTodolistTC = (todolistId: string) => (dispatch: Dispatch<TodolistActionTypes>) => {
+    dispatch(changeAppLoadingStatus('loading'))
     todolistsAPI.deleteTodolist(todolistId)
-        .then(res => dispatch(removeTodolistAC(todolistId)))
+        .then(res => {
+            if (res.data.resultCode === 0) {
+                dispatch(removeTodolistAC(todolistId))
+            } else {
+                dispatch(changeAppErrorValue(res.data.messages ? res.data.messages[0] : "Some error is occurred"))
+            }
+        })
+        .catch((err: AxiosError) => dispatch(changeAppErrorValue(err.message)))
+        .finally(()=> dispatch(changeAppLoadingStatus('succeeded')))
 }
 
 // types
@@ -52,10 +88,11 @@ export type TodolistActionTypes =
     | ReturnType<typeof filterTaskAC>
     | ReturnType<typeof changeTodolistTitleAC>
     | RemoveTodolistAT
+    | AppActionType
 
 export type SetTodolistsAT = ReturnType<typeof setTodolistsAC>
 export type AddTodolistAT = ReturnType<typeof addTodolistAC>
 export type RemoveTodolistAT = ReturnType<typeof removeTodolistAC>
 
 export type FilterProps = 'All' | 'Active' | 'Completed'
-export type TodolistStateType = TodolistType & {filter: FilterProps}
+export type TodolistStateType = TodolistType & { filter: FilterProps }

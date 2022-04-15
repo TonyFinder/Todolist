@@ -21,7 +21,7 @@ export const todolistsAPI = {
         return instance.put<any, BaseTodolistResponseType, {title: string}>(`todo-lists/${todolistId}`, {title})
     },
     deleteTodolist(todolistId: string) {
-        return instance.delete<BaseTodolistResponseType>(`todo-lists/${todolistId}`)
+        return instance.delete<any, BaseTodolistResponseType, {}>(`todo-lists/${todolistId}`)
     }
 }
 export const tasksAPI = {
@@ -35,7 +35,7 @@ export const tasksAPI = {
         return instance.put<any, BaseResponseTasksType<{item: TaskType}>, TaskUpdateDomainType>(`todo-lists/${todolistId}/tasks/${taskId}`, updateObject)
     },
     deleteTask(todolistId: string, taskId: string) {
-        return instance.delete<BaseResponseTasksType>(`todo-lists/${todolistId}/tasks/${taskId}`)
+        return instance.delete<any, BaseResponseTasksType, {}>(`todo-lists/${todolistId}/tasks/${taskId}`)
     }
 }
 
@@ -59,13 +59,6 @@ export type TodolistType = {
     order: number
     title: string
 }
-type BaseTodolistResponseType<T = {}> = {
-    fieldsErrors: []
-    messages: []
-    resultCode: 0
-    data: {
-        data: T}
-}
 export type TaskType = {
     description: string
     title: string
@@ -86,15 +79,24 @@ export type TaskUpdateType = {
     startDate: string
     deadline: string
 }
+type BaseTodolistResponseType<T = {}> = {
+    data: {
+        fieldsErrors: []
+        messages: string[]
+        resultCode: number
+        data: T
+    }
+}
 type TasksResponseType = {
     items: TaskType[]
     error: string
     totalCount: number
 }
 type BaseResponseTasksType<T = {}> = {
+data: {
     resultCode: number
     messages: string[],
     fieldsErrors: string[]
-    data: {
-        data: T}
+    data: T
+}
 }

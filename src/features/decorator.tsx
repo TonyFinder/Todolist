@@ -31,6 +31,10 @@ const initialGlobalState: AppStateRootType = {
             {id: "5", title: "Screw driver", status: TaskStatuses.New, todolistId: "todolistId2", order: 0,
                 startDate: "", addedDate: "", priority: TaskPriorities.Low, deadline: "", description: ""}
         ]
+    },
+    app: {
+        loadingStatus: 'idle',
+        errorServer: null
     }
 };
 

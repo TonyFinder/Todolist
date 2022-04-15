@@ -6,9 +6,15 @@ import Toolbar from '@mui/material/Toolbar';
 import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 import Menu from '@mui/icons-material/Menu';
+import LinearProgress from '@mui/material/LinearProgress';
+import {useCustomSelector} from './store';
+import {RequestStatusType} from '../features/app-reducer';
+import CustomizedSnackbars from '../components/Snackbar/Snackbar';
 
 export const App = React.memo( () => {
     console.log("App")
+
+    const loadingStatus = useCustomSelector<RequestStatusType>(state => state.app.loadingStatus)
 
     return (
         <div className="App">
@@ -23,7 +29,11 @@ export const App = React.memo( () => {
                     <Button variant={'outlined'} color="inherit">Login</Button>
                 </Toolbar>
             </AppBar>
+            {loadingStatus === 'loading' && <LinearProgress color="success"/>}
+
             <TodolistsList/>
+
+            <CustomizedSnackbars/>
         </div>
     );
 } )

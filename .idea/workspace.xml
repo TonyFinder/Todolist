@@ -1,16 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="7e68dc76-5612-4367-9842-d746373be903" name="Default Changelist" comment="Lesson 14. Refactoring.">
+    <list default="true" id="7e68dc76-5612-4367-9842-d746373be903" name="Default Changelist" comment="Lesson 15. Re-installed Material UI and changed all imports according to this article https://mui.com/guides/minimizing-bundle-size/">
+      <change afterPath="$PROJECT_DIR$/src/Components/Snackbar/Snackbar.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/features/app-reducer.test.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/features/app-reducer.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/utils/common-commands.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/AddItemForm/AddItemForm.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/AddItemForm/AddItemForm.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/EditableSpan/EditableSpan.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/EditableSpan/EditableSpan.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/api/api.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/api.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/App.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/AddItemForm/AddItemForm.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/AddItemForm/AddItemForm.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/EditableSpan/EditableSpan.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/EditableSpan/EditableSpan.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/features/Task/Task.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/Task/Task.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/features/TodolistsList/Todolist/Todolist.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/TodolistsList/Todolist/Todolist.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/features/TodolistsList/TodolistsList.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/TodolistsList/TodolistsList.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/store.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/store.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/features/decorator.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/decorator.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/features/reducer-tasks.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/reducer-tasks.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/features/reducer-todolist.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/reducer-todolist.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -21,8 +25,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="JavaScript File" />
-        <option value="TypeScript File" />
         <option value="TypeScript JSX File" />
+        <option value="TypeScript File" />
       </list>
     </option>
   </component>
@@ -133,8 +137,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="npm.start" />
         <item itemvalue="npm.test" />
+        <item itemvalue="npm.start" />
         <item itemvalue="npm.storybook" />
         <item itemvalue="npm.test:integration" />
         <item itemvalue="Jest.addItemForm" />
@@ -192,7 +196,7 @@
       <workItem from="1649032467335" duration="33259000" />
       <workItem from="1649939926504" duration="416000" />
       <workItem from="1649940355089" duration="1168000" />
-      <workItem from="1649941536473" duration="1808000" />
+      <workItem from="1649941536473" duration="16255000" />
     </task>
     <task id="LOCAL-00001" summary="Lesson 7. Material UI. Changed all custom components to Material UI.">
       <created>1634021489874</created>
@@ -306,7 +310,14 @@
       <option name="project" value="LOCAL" />
       <updated>1649074110318</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="Lesson 15. Re-installed Material UI and changed all imports according to this article https://mui.com/guides/minimizing-bundle-size/">
+      <created>1649943645198</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1649943645198</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -341,6 +352,7 @@
     <MESSAGE value="Lesson 14. Refactoring for reducers." />
     <MESSAGE value="Lesson 14. Creating thunks for all the actions." />
     <MESSAGE value="Lesson 14. Refactoring." />
-    <option name="LAST_COMMIT_MESSAGE" value="Lesson 14. Refactoring." />
+    <MESSAGE value="Lesson 15. Re-installed Material UI and changed all imports according to this article https://mui.com/guides/minimizing-bundle-size/" />
+    <option name="LAST_COMMIT_MESSAGE" value="Lesson 15. Re-installed Material UI and changed all imports according to this article https://mui.com/guides/minimizing-bundle-size/" />
   </component>
 </project>
