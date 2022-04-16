@@ -4,7 +4,7 @@ import {AppStateRootType} from '../app/store';
 import {combineReducers, createStore} from 'redux';
 import {tasksReducer} from './reducer-tasks';
 import {todolistsReducer} from './reducer-todolist';
-import {TaskPriorities, TaskStatuses} from '../api/api';
+import {TaskPriorities, TaskStatuses} from '../utils/enums';
 
 const rootReducer = combineReducers({
     tasks: tasksReducer,

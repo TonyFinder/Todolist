@@ -2,6 +2,7 @@ import {todolistsAPI, TodolistType} from '../api/api';
 import {Dispatch} from 'redux';
 import {AppActionType, changeAppErrorValue, changeAppLoadingStatus} from './app-reducer';
 import {AxiosError} from 'axios';
+import {ApiResultCode} from '../utils/enums';
 
 let initialState: TodolistStateType[] = []
 
@@ -45,7 +46,7 @@ export const addTodolistTC = (title: string) => (dispatch: Dispatch<TodolistActi
     dispatch(changeAppLoadingStatus('loading'))
     todolistsAPI.createTodolist(title)
         .then(res => {
-            if (res.data.resultCode === 0) {
+            if (res.data.resultCode === ApiResultCode.success) {
                 dispatch(addTodolistAC(res.data.data.item))
             } else {
                 dispatch(changeAppErrorValue(res.data.messages ? res.data.messages[0] : "Some error is occurred"))
@@ -58,7 +59,7 @@ export const changeTodolistTitleTC = (title: string, todolistId: string) => (dis
     dispatch(changeAppLoadingStatus('loading'))
     todolistsAPI.updateTodolist(todolistId, title)
         .then(res => {
-            if (res.data.resultCode === 0) {
+            if (res.data.resultCode === ApiResultCode.success) {
                 dispatch(changeTodolistTitleAC(title, todolistId))
             } else {
                 dispatch(changeAppErrorValue(res.data.messages ? res.data.messages[0] : "Some error is occurred"))
@@ -71,7 +72,7 @@ export const removeTodolistTC = (todolistId: string) => (dispatch: Dispatch<Todo
     dispatch(changeAppLoadingStatus('loading'))
     todolistsAPI.deleteTodolist(todolistId)
         .then(res => {
-            if (res.data.resultCode === 0) {
+            if (res.data.resultCode === ApiResultCode.success) {
                 dispatch(removeTodolistAC(todolistId))
             } else {
                 dispatch(changeAppErrorValue(res.data.messages ? res.data.messages[0] : "Some error is occurred"))

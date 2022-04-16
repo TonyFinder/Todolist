@@ -1,5 +1,6 @@
 import axios from 'axios';
 import {TaskUpdateDomainType} from '../features/reducer-tasks';
+import {TaskPriorities, TaskStatuses} from '../utils/enums';
 
 const instance = axios.create({
     baseURL: 'https://social-network.samuraijs.com/api/1.1/',
@@ -40,19 +41,6 @@ export const tasksAPI = {
 }
 
 // types
-export enum TaskStatuses {
-    New,
-    InProgress,
-    Completed,
-    Draft
-}
-export enum TaskPriorities {
-    Low,
-    Middle,
-    Hi,
-    Urgently,
-    Later
-}
 export type TodolistType = {
     addedDate: string
     id: string

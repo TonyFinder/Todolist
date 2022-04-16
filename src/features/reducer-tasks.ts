@@ -1,10 +1,11 @@
 import {AddTodolistAT, RemoveTodolistAT, SetTodolistsAT} from './reducer-todolist';
-import {TaskPriorities, tasksAPI, TaskStatuses, TaskType} from '../api/api';
+import {tasksAPI, TaskType} from '../api/api';
 import {Dispatch} from 'redux';
 import {AppStateRootType} from '../app/store';
 import {AppActionType, changeAppErrorValue, changeAppLoadingStatus} from './app-reducer';
 import {AxiosError} from 'axios';
 import {handlerForAppErrorInThen} from '../utils/common-commands';
+import {ApiResultCode, TaskPriorities, TaskStatuses} from '../utils/enums';
 
 let initialState: TasksPropsType = {}
 
@@ -59,7 +60,7 @@ export const addTaskTC = (title: string, todolistId: string) => (dispatch: Dispa
     dispatch(changeAppLoadingStatus('loading'))
     tasksAPI.createTask(todolistId, title)
         .then(res => {
-            if (res.data.resultCode === 0) {
+            if (res.data.resultCode === ApiResultCode.success) {
                 dispatch(addTaskAC(todolistId, res.data.data.item))
             } else {
                 handlerForAppErrorInThen(dispatch, res.data.messages)
@@ -84,7 +85,7 @@ export const updateTaskTC = (todolistId: string, taskId: string, updateObject: T
     }
     tasksAPI.updateTask(todolistId, taskId, model)
         .then(res => {
-            if (res.data.resultCode === 0) {
+            if (res.data.resultCode === ApiResultCode.success) {
                 dispatch(updateTaskAC(taskId, todolistId, updateObject))
             } else {
                 handlerForAppErrorInThen(dispatch, res.data.messages)
@@ -97,7 +98,7 @@ export const removeTaskTC = (taskId: string, todolistId: string) => (dispatch: D
     dispatch(changeAppLoadingStatus('loading'))
     tasksAPI.deleteTask(todolistId, taskId)
         .then(res => {
-            if (res.data.resultCode === 0) {
+            if (res.data.resultCode === ApiResultCode.success) {
                 dispatch(removeTaskAC(taskId, todolistId))
             }else {
                 handlerForAppErrorInThen(dispatch, res.data.messages)

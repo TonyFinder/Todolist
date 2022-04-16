@@ -1,15 +1,14 @@
 import React, {useCallback} from 'react';
 import {removeTaskTC, updateTaskTC} from '../reducer-tasks';
 import {EditableSpan} from '../../components/EditableSpan/EditableSpan';
-import {useDispatch, useSelector} from 'react-redux';
-import {AppStateRootType} from '../../app/store';
-import {TaskStatuses, TaskType} from '../../api/api';
+import {useDispatch} from 'react-redux';
+import {useCustomSelector} from '../../app/store';
+import {TaskType} from '../../api/api';
 import ListItem from '@mui/material/ListItem';
 import IconButton from '@mui/material/IconButton';
 import DeleteTwoTone from '@mui/icons-material/DeleteTwoTone';
 import Checkbox from '@mui/material/Checkbox';
-
-
+import {TaskStatuses} from '../../utils/enums';
 
 
 type TaskPropsType = {
@@ -20,7 +19,7 @@ type TaskPropsType = {
 export const Task = React.memo( ({id, todolistId}: TaskPropsType) => {
     console.log("Task")
 
-    const task = useSelector<AppStateRootType, TaskType>(state => state.tasks[todolistId].filter(f => f.id === id)[0])
+    const task = useCustomSelector<TaskType>(state => state.tasks[todolistId].filter(f => f.id === id)[0])
     const dispatch = useDispatch()
 
     const changeTaskTitle = useCallback( (title: string) => dispatch(updateTaskTC(todolistId, task.id, {title})), [dispatch, todolistId, task.id])

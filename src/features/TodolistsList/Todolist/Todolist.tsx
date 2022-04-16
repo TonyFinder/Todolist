@@ -1,16 +1,23 @@
 import React, {useCallback, useEffect} from 'react';
 import {AddItemForm} from '../../../components/AddItemForm/AddItemForm';
 import {EditableSpan} from '../../../components/EditableSpan/EditableSpan';
-import {useDispatch, useSelector} from 'react-redux';
-import {AppStateRootType} from '../../../app/store';
+import {useDispatch} from 'react-redux';
+import {useCustomSelector} from '../../../app/store';
 import {addTaskTC, setTasksTC} from '../../reducer-tasks';
-import {changeTodolistTitleTC, FilterProps, filterTaskAC, removeTodolistTC, TodolistStateType} from '../../reducer-todolist';
+import {
+    changeTodolistTitleTC,
+    FilterProps,
+    filterTaskAC,
+    removeTodolistTC,
+    TodolistStateType
+} from '../../reducer-todolist';
 import {Task} from '../../Task/Task';
-import {TaskStatuses, TaskType} from '../../../api/api';
+import {TaskType} from '../../../api/api';
 import IconButton from '@mui/material/IconButton';
 import Button from '@mui/material/Button';
 import List from '@mui/material/List';
 import DeleteForeverTwoTone from '@mui/icons-material/DeleteForeverTwoTone';
+import {TaskStatuses} from '../../../utils/enums';
 
 
 type TodolistPropsType = {todolistId: string}
@@ -24,8 +31,8 @@ export const Todolist = React.memo( ({todolistId}: TodolistPropsType) => {
     },[])
 
     let dispatch = useDispatch()
-    let todolist = useSelector<AppStateRootType, TodolistStateType>(state => state.todolists.filter(f => f.id === todolistId)[0])
-    let tasks = useSelector<AppStateRootType, TaskType[]>(state => state.tasks[todolistId])
+    let todolist = useCustomSelector<TodolistStateType>(state => state.todolists.filter(f => f.id === todolistId)[0])
+    let tasks = useCustomSelector<TaskType[]>(state => state.tasks[todolistId])
 
     //Фильтрация тасков
     todolist.filter === 'Active'
