@@ -8,7 +8,8 @@ import {
     updateTaskAC
 } from './reducer-tasks';
 import {addTodolistAC, removeTodolistAC, setTodolistsAC, todolistsReducer, TodolistStateType} from './reducer-todolist';
-import {TaskPriorities, TaskStatuses, TodolistType} from '../api/api';
+import {TodolistType} from '../api/api';
+import {TaskPriorities, TaskStatuses} from '../utils/enums';
 
 //Можно обойтись без использования beforeEach и в теле объявить все переменные, так как редьюсеры не меняют входящие данные.
 //Использовал два разных подхода в тестах для todolist и tasks

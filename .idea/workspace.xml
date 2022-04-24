@@ -1,16 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="7e68dc76-5612-4367-9842-d746373be903" name="Default Changelist" comment="Lesson 15. Errors and loadings.">
-      <change afterPath="$PROJECT_DIR$/src/utils/enums.ts" afterDir="false" />
+    <list default="true" id="7e68dc76-5612-4367-9842-d746373be903" name="Default Changelist" comment="Lesson 15. Refactoring.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/api/api.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/api.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/features/Task/Task.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/Task/Task.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/features/TodolistsList/Todolist/Todolist.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/TodolistsList/Todolist/Todolist.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/features/TodolistsList/TodolistsList.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/TodolistsList/TodolistsList.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/features/decorator.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/decorator.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/features/reducer-tasks.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/reducer-tasks.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/features/reducer-tasks.test.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/reducer-tasks.test.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/features/reducer-todolist.test.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/reducer-todolist.test.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/features/reducer-todolist.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/reducer-todolist.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utils/enums.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/enums.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -192,7 +190,8 @@
       <workItem from="1649032467335" duration="33259000" />
       <workItem from="1649939926504" duration="416000" />
       <workItem from="1649940355089" duration="1168000" />
-      <workItem from="1649941536473" duration="18842000" />
+      <workItem from="1649941536473" duration="19820000" />
+      <workItem from="1650775349068" duration="6402000" />
     </task>
     <task id="LOCAL-00001" summary="Lesson 7. Material UI. Changed all custom components to Material UI.">
       <created>1634021489874</created>
@@ -320,7 +319,14 @@
       <option name="project" value="LOCAL" />
       <updated>1650001943453</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="Lesson 15. Refactoring.">
+      <created>1650112268714</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1650112268714</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -357,6 +363,7 @@
     <MESSAGE value="Lesson 14. Refactoring." />
     <MESSAGE value="Lesson 15. Re-installed Material UI and changed all imports according to this article https://mui.com/guides/minimizing-bundle-size/" />
     <MESSAGE value="Lesson 15. Errors and loadings." />
-    <option name="LAST_COMMIT_MESSAGE" value="Lesson 15. Errors and loadings." />
+    <MESSAGE value="Lesson 15. Refactoring." />
+    <option name="LAST_COMMIT_MESSAGE" value="Lesson 15. Refactoring." />
   </component>
 </project>

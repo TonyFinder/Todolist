@@ -17,7 +17,7 @@ import IconButton from '@mui/material/IconButton';
 import Button from '@mui/material/Button';
 import List from '@mui/material/List';
 import DeleteForeverTwoTone from '@mui/icons-material/DeleteForeverTwoTone';
-import {TaskStatuses} from '../../../utils/enums';
+import {DisableStatuses, TaskStatuses} from '../../../utils/enums';
 
 
 type TodolistPropsType = {todolistId: string}
@@ -52,12 +52,12 @@ export const Todolist = React.memo( ({todolistId}: TodolistPropsType) => {
 
     return (
         <div>
-            <IconButton onClick={removeTodolist}>
-                <DeleteForeverTwoTone color={'secondary'}/>
+            <IconButton onClick={removeTodolist} disabled={todolist.disabled === DisableStatuses.disableTrue}>
+                <DeleteForeverTwoTone color={todolist.disabled === DisableStatuses.disableTrue ? 'disabled' : 'secondary'}/>
             </IconButton>
             <h3><EditableSpan changedTitle={changeTodolistTitle} titleMain={todolist.title} completed={false}
-                              header={true}/></h3>
-            <AddItemForm addItem={addTask} />
+                              header={true} disable={todolist.disabled}/></h3>
+            <AddItemForm addItem={addTask} disable={todolist.disabled}/>
             <div>
                 <Button variant={'contained'} color={todolist.filter === 'All' ? 'primary' : 'inherit'} size={'small'}
                         onClick={() => filterTasks('All')}>All</Button>

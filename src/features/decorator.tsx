@@ -4,7 +4,7 @@ import {AppStateRootType} from '../app/store';
 import {combineReducers, createStore} from 'redux';
 import {tasksReducer} from './reducer-tasks';
 import {todolistsReducer} from './reducer-todolist';
-import {TaskPriorities, TaskStatuses} from '../utils/enums';
+import {DisableStatuses, TaskPriorities, TaskStatuses} from '../utils/enums';
 
 const rootReducer = combineReducers({
     tasks: tasksReducer,
@@ -13,8 +13,8 @@ const rootReducer = combineReducers({
 
 const initialGlobalState: AppStateRootType = {
     todolists: [
-        {id: "todolistId1", title: "Movies to watch", filter: "All", order: 0, addedDate: ""},
-        {id: "todolistId2", title: "What to take", filter: "All", order: 0, addedDate: ""}
+        {id: "todolistId1", title: "Movies to watch", filter: "All", order: 0, addedDate: "", disabled: DisableStatuses.disableFalse},
+        {id: "todolistId2", title: "What to take", filter: "All", order: 0, addedDate: "", disabled: DisableStatuses.disableFalse}
     ] ,
     tasks: {
         ["todolistId1"]: [
