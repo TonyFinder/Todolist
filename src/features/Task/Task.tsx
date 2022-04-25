@@ -23,7 +23,9 @@ export const Task = React.memo( ({id, todolistId}: TaskPropsType) => {
     const dispatch = useDispatch()
 
     const changeTaskTitle = useCallback( (title: string) => dispatch(updateTaskTC(todolistId, task.id, {title})), [dispatch, todolistId, task.id])
-    const changeTaskCheckbox = useCallback( (taskId: string, event: boolean) => dispatch(updateTaskTC(todolistId, taskId, event ? {status: TaskStatuses.Completed} : {status: TaskStatuses.New})), [dispatch, todolistId])
+    const changeTaskCheckbox = useCallback( (taskId: string, event: boolean) => {
+        dispatch(updateTaskTC(todolistId, taskId, event ? {status: TaskStatuses.Completed} : {status: TaskStatuses.New}))
+    }, [dispatch, todolistId])
     const removeTask = useCallback( (taskId: string) => dispatch(removeTaskTC(taskId, todolistId)), [dispatch, todolistId])
 
     return (
@@ -32,7 +34,8 @@ export const Task = React.memo( ({id, todolistId}: TaskPropsType) => {
                 <DeleteTwoTone color={'secondary'}/>
             </IconButton>
             <Checkbox size={'small'} color={'primary'}
-                      onChange={(event) => changeTaskCheckbox(task.id, event.currentTarget.checked)} checked={task.status === TaskStatuses.Completed}/>
+                      onChange={(event) => changeTaskCheckbox(task.id, event.currentTarget.checked)}
+                      checked={task.status === TaskStatuses.Completed}/>
             <EditableSpan titleMain={task.title} changedTitle={changeTaskTitle} completed={task.status === TaskStatuses.Completed}
                           header={false}/>
         </ListItem>

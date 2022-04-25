@@ -8,8 +8,8 @@ import Typography from '@mui/material/Typography';
 import Menu from '@mui/icons-material/Menu';
 import LinearProgress from '@mui/material/LinearProgress';
 import {useCustomSelector} from './store';
-import {RequestStatusType} from '../features/app-reducer';
-import CustomizedSnackbars from '../components/Snackbar/Snackbar';
+import ErrorSnackbar from '../components/ErrorSnackbar/ErrorSnackbar';
+import {RequestStatusType} from '../utils/enums';
 
 export const App = React.memo( () => {
     console.log("App")
@@ -29,11 +29,11 @@ export const App = React.memo( () => {
                     <Button variant={'outlined'} color="inherit">Login</Button>
                 </Toolbar>
             </AppBar>
-            {loadingStatus === 'loading' && <LinearProgress color="success"/>}
+            {loadingStatus === RequestStatusType.loading && <LinearProgress color="success"/>}
 
             <TodolistsList/>
 
-            <CustomizedSnackbars/>
+            <ErrorSnackbar/>
         </div>
     );
-} )
+})

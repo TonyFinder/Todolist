@@ -2,14 +2,13 @@ import React, {useCallback, useState} from 'react';
 import TextField from '@mui/material/TextField';
 import IconButton from '@mui/material/IconButton';
 import AddCircleTwoTone from '@mui/icons-material/AddCircleTwoTone';
-import {DisableStatuses} from '../../utils/enums';
 
 export type AddItemFormPropsType = {
-    disable?: DisableStatuses
+    disable?: boolean
     addItem: (inputTextValue: string) => void
 }
 
-export const AddItemForm = React.memo( ({disable, addItem}: AddItemFormPropsType) => {
+export const AddItemForm = React.memo( ({disable = false, addItem}: AddItemFormPropsType) => {
     console.log("AddItemForm")
 
     //Хуки React
@@ -44,9 +43,9 @@ export const AddItemForm = React.memo( ({disable, addItem}: AddItemFormPropsType
                 error={error}
                 helperText={error && "Title is a must"}
                 style={{marginBottom: "10px"}}
-                disabled={disable === DisableStatuses.disableTrue}
+                disabled={disable}
                 />
-            <IconButton color={'primary'} onClick={() => onClickPressHandler("Enter")} disabled={disable === DisableStatuses.disableTrue}>
+            <IconButton color={'primary'} onClick={() => onClickPressHandler("Enter")} disabled={disable}>
                 <AddCircleTwoTone/>
             </IconButton>
         </div>

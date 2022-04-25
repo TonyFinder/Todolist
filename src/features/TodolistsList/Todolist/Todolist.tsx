@@ -9,7 +9,7 @@ import {
     FilterProps,
     filterTaskAC,
     removeTodolistTC,
-    TodolistStateType
+    TodolistDomainType
 } from '../../reducer-todolist';
 import {Task} from '../../Task/Task';
 import {TaskType} from '../../../api/api';
@@ -17,7 +17,7 @@ import IconButton from '@mui/material/IconButton';
 import Button from '@mui/material/Button';
 import List from '@mui/material/List';
 import DeleteForeverTwoTone from '@mui/icons-material/DeleteForeverTwoTone';
-import {DisableStatuses, TaskStatuses} from '../../../utils/enums';
+import {RequestStatusType, TaskStatuses} from '../../../utils/enums';
 
 
 type TodolistPropsType = {todolistId: string}
@@ -31,7 +31,7 @@ export const Todolist = React.memo( ({todolistId}: TodolistPropsType) => {
     },[])
 
     let dispatch = useDispatch()
-    let todolist = useCustomSelector<TodolistStateType>(state => state.todolists.filter(f => f.id === todolistId)[0])
+    let todolist = useCustomSelector<TodolistDomainType>(state => state.todolists.filter(f => f.id === todolistId)[0])
     let tasks = useCustomSelector<TaskType[]>(state => state.tasks[todolistId])
 
     //Фильтрация тасков
@@ -52,12 +52,12 @@ export const Todolist = React.memo( ({todolistId}: TodolistPropsType) => {
 
     return (
         <div>
-            <IconButton onClick={removeTodolist} disabled={todolist.disabled === DisableStatuses.disableTrue}>
-                <DeleteForeverTwoTone color={todolist.disabled === DisableStatuses.disableTrue ? 'disabled' : 'secondary'}/>
+            <IconButton onClick={removeTodolist} disabled={todolist.entityStatus === RequestStatusType.loading}>
+                <DeleteForeverTwoTone color={todolist.entityStatus === RequestStatusType.loading ? 'disabled' : 'secondary'}/>
             </IconButton>
             <h3><EditableSpan changedTitle={changeTodolistTitle} titleMain={todolist.title} completed={false}
-                              header={true} disable={todolist.disabled}/></h3>
-            <AddItemForm addItem={addTask} disable={todolist.disabled}/>
+                              header={true} disable={todolist.entityStatus === RequestStatusType.loading}/></h3>
+            <AddItemForm addItem={addTask} disable={todolist.entityStatus === RequestStatusType.loading}/>
             <div>
                 <Button variant={'contained'} color={todolist.filter === 'All' ? 'primary' : 'inherit'} size={'small'}
                         onClick={() => filterTasks('All')}>All</Button>

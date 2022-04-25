@@ -12,7 +12,7 @@ const Alert = React.forwardRef<HTMLDivElement, AlertProps>(function Alert(
     return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
 });
 
-export default function CustomizedSnackbars() {
+export default function ErrorSnackbar() {
     const error = useCustomSelector<NullPossibleType<string>>(state => state.app.errorServer)
     const dispatch = useDispatch()
 

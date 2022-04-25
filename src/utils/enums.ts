@@ -14,7 +14,9 @@ export enum TaskPriorities {
 export enum ApiResultCode {
     success
 }
-export enum DisableStatuses {
-    disableFalse,
-    disableTrue
+export enum RequestStatusType {
+    idle,
+    loading,
+    succeeded,
+    failed
 }

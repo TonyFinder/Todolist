@@ -1,24 +1,23 @@
 import React, {ChangeEvent, KeyboardEvent, useCallback, useState} from 'react'
 import TextField from '@mui/material/TextField';
 import Typography from '@mui/material/Typography';
-import {DisableStatuses} from '../../utils/enums';
 
 type EditableSpanPropsType = {
     titleMain: string
     completed: boolean
     changedTitle: (title: string) => void
     header: boolean
-    disable?: DisableStatuses
+    disable?: boolean
 }
 
-export const EditableSpan = React.memo( ({disable, header, completed, changedTitle, titleMain}: EditableSpanPropsType) => {
+export const EditableSpan = React.memo( ({disable = false, header, completed, changedTitle, titleMain}: EditableSpanPropsType) => {
     console.log("EditableSpan")
 
     //Хуки React
     let [title, setTitle] = useState(titleMain)
     let [inputActive, setInputActive] = useState(false)
 
-    const inputActiveOn = useCallback( () => disable === DisableStatuses.disableFalse && setInputActive(true), [disable])
+    const inputActiveOn = useCallback( () => !disable && setInputActive(true), [disable])
     const onChangeHandler = useCallback( (e: ChangeEvent<HTMLInputElement>) => setTitle(e.currentTarget.value), [])
     const titleForToDolist = useCallback( () => {
         setInputActive(false)

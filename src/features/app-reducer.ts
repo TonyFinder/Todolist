@@ -1,6 +1,7 @@
+import {RequestStatusType} from '../utils/enums';
 
 let initialState = {
-    loadingStatus: 'idle' as RequestStatusType,
+    loadingStatus: RequestStatusType.idle,
     errorServer: null as NullPossibleType<string>
 }
 
@@ -21,6 +22,5 @@ export const changeAppErrorValue = (errorServer: NullPossibleType<string>) => ({
 
 // types
 export type NullPossibleType<T> = null | T
-export type RequestStatusType = 'idle' | 'loading' | 'succeeded' | 'failed'
 export type AppActionType = ReturnType<typeof changeAppLoadingStatus> | ReturnType<typeof changeAppErrorValue>
 type initialStateType = typeof initialState

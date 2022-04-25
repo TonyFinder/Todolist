@@ -4,7 +4,7 @@ import {AppStateRootType} from '../app/store';
 import {combineReducers, createStore} from 'redux';
 import {tasksReducer} from './reducer-tasks';
 import {todolistsReducer} from './reducer-todolist';
-import {DisableStatuses, TaskPriorities, TaskStatuses} from '../utils/enums';
+import {RequestStatusType, TaskPriorities, TaskStatuses} from '../utils/enums';
 
 const rootReducer = combineReducers({
     tasks: tasksReducer,
@@ -13,27 +13,27 @@ const rootReducer = combineReducers({
 
 const initialGlobalState: AppStateRootType = {
     todolists: [
-        {id: "todolistId1", title: "Movies to watch", filter: "All", order: 0, addedDate: "", disabled: DisableStatuses.disableFalse},
-        {id: "todolistId2", title: "What to take", filter: "All", order: 0, addedDate: "", disabled: DisableStatuses.disableFalse}
+        {id: "todolistId1", title: "Movies to watch", filter: "All", order: 0, addedDate: "", entityStatus: RequestStatusType.idle},
+        {id: "todolistId2", title: "What to take", filter: "All", order: 0, addedDate: "", entityStatus: RequestStatusType.idle}
     ] ,
     tasks: {
         ["todolistId1"]: [
             {id: "1", title: "Transformers", status: TaskStatuses.Completed, todolistId: "todolistId1", order: 0,
-                startDate: "", addedDate: "", priority: TaskPriorities.Low, deadline: "", description: ""},
+                startDate: "", addedDate: "", priority: TaskPriorities.Low, deadline: "", description: "", entityStatus: RequestStatusType.idle},
             {id: "2", title: "Marvel Super Hero", status: TaskStatuses.New, todolistId: "todolistId1", order: 0,
-                startDate: "", addedDate: "", priority: TaskPriorities.Low, deadline: "", description: ""},
+                startDate: "", addedDate: "", priority: TaskPriorities.Low, deadline: "", description: "", entityStatus: RequestStatusType.idle},
             {id: "3", title: "Heroes", status: TaskStatuses.Completed, todolistId: "todolistId1", order: 0,
-                startDate: "", addedDate: "", priority: TaskPriorities.Low, deadline: "", description: ""}
+                startDate: "", addedDate: "", priority: TaskPriorities.Low, deadline: "", description: "", entityStatus: RequestStatusType.idle}
         ],
         ["todolistId2"]: [
             {id: "4", title: "Hammer", status: TaskStatuses.New, todolistId: "todolistId2", order: 0,
-                startDate: "", addedDate: "", priority: TaskPriorities.Low, deadline: "", description: ""},
+                startDate: "", addedDate: "", priority: TaskPriorities.Low, deadline: "", description: "", entityStatus: RequestStatusType.idle},
             {id: "5", title: "Screw driver", status: TaskStatuses.New, todolistId: "todolistId2", order: 0,
-                startDate: "", addedDate: "", priority: TaskPriorities.Low, deadline: "", description: ""}
+                startDate: "", addedDate: "", priority: TaskPriorities.Low, deadline: "", description: "", entityStatus: RequestStatusType.idle}
         ]
     },
     app: {
-        loadingStatus: 'idle',
+        loadingStatus: RequestStatusType.idle,
         errorServer: null
     }
 };
