@@ -3,23 +3,23 @@ import {
     changeAppErrorValue,
     changeAppLoadingStatus,
     NullPossibleType,
-    RequestStatusType
 } from './app-reducer';
+import {RequestStatusType} from '../utils/enums';
 
 type instanceStateType = typeof instanceState
 
 let instanceState = {
-    loadingStatus: 'idle' as RequestStatusType,
+    loadingStatus: RequestStatusType.idle,
     errorServer: null as NullPossibleType<string>
 }
 
 test('Status for loading have to be changed', () => {
-    let finalState: instanceStateType = appReducer(instanceState, changeAppLoadingStatus('loading'))
+    let finalState: instanceStateType = appReducer(instanceState, changeAppLoadingStatus(RequestStatusType.loading))
 
-    expect(instanceState.loadingStatus).toBe('idle')
+    expect(instanceState.loadingStatus).toBe(RequestStatusType.idle)
     expect(instanceState.errorServer).toBe(null)
     expect(finalState).toEqual({
-        loadingStatus: 'loading',
+        loadingStatus: RequestStatusType.loading,
         errorServer: null
     })
 })
@@ -27,11 +27,11 @@ test('Error value have to be changed', () => {
     let finalState: instanceStateType = appReducer(instanceState, changeAppErrorValue('I am ERROR!'))
 
     expect(instanceState).toEqual({
-        loadingStatus: 'idle',
+        loadingStatus: RequestStatusType.idle,
         errorServer: null
     })
     expect(finalState).toEqual({
-        loadingStatus: 'idle',
+        loadingStatus: RequestStatusType.idle,
         errorServer: 'I am ERROR!'
     })
 })
