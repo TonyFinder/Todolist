@@ -3,7 +3,7 @@ import {AddItemForm} from '../../../components/AddItemForm/AddItemForm';
 import {EditableSpan} from '../../../components/EditableSpan/EditableSpan';
 import {useDispatch} from 'react-redux';
 import {useCustomSelector} from '../../../app/store';
-import {addTaskTC, setTasksTC} from '../../reducer-tasks';
+import {addTaskTC, setTasksTC, TaskDomainType} from '../../reducer-tasks';
 import {
     changeTodolistTitleTC,
     FilterProps,
@@ -12,7 +12,6 @@ import {
     TodolistDomainType
 } from '../../reducer-todolist';
 import {Task} from '../../Task/Task';
-import {TaskType} from '../../../api/api';
 import IconButton from '@mui/material/IconButton';
 import Button from '@mui/material/Button';
 import List from '@mui/material/List';
@@ -20,19 +19,21 @@ import DeleteForeverTwoTone from '@mui/icons-material/DeleteForeverTwoTone';
 import {RequestStatusType, TaskStatuses} from '../../../utils/enums';
 
 
-type TodolistPropsType = {todolistId: string}
+type TodolistPropsType = {todolistId: string, demo?: boolean}
 
-export const Todolist = React.memo( ({todolistId}: TodolistPropsType) => {
+export const Todolist = React.memo( ({todolistId, demo = false}: TodolistPropsType) => {
     console.log("Todolist")
 
     useEffect(()=>{
+        if (demo) return
         dispatch(setTasksTC(todolistId))
         // eslint-disable-next-line
     },[])
 
     let dispatch = useDispatch()
     let todolist = useCustomSelector<TodolistDomainType>(state => state.todolists.filter(f => f.id === todolistId)[0])
-    let tasks = useCustomSelector<TaskType[]>(state => state.tasks[todolistId])
+    let tasks = useCustomSelector<TaskDomainType[]>(state => state.tasks[todolistId])
+    let disable = todolist.entityStatus === RequestStatusType.loading
 
     //Фильтрация тасков
     todolist.filter === 'Active'
@@ -52,12 +53,12 @@ export const Todolist = React.memo( ({todolistId}: TodolistPropsType) => {
 
     return (
         <div>
-            <IconButton onClick={removeTodolist} disabled={todolist.entityStatus === RequestStatusType.loading}>
-                <DeleteForeverTwoTone color={todolist.entityStatus === RequestStatusType.loading ? 'disabled' : 'secondary'}/>
+            <IconButton onClick={removeTodolist} disabled={disable}>
+                <DeleteForeverTwoTone color={disable ? 'disabled' : 'secondary'}/>
             </IconButton>
             <h3><EditableSpan changedTitle={changeTodolistTitle} titleMain={todolist.title} completed={false}
-                              header={true} disable={todolist.entityStatus === RequestStatusType.loading}/></h3>
-            <AddItemForm addItem={addTask} disable={todolist.entityStatus === RequestStatusType.loading}/>
+                              header={true} disable={disable}/></h3>
+            <AddItemForm addItem={addTask} disable={disable}/>
             <div>
                 <Button variant={'contained'} color={todolist.filter === 'All' ? 'primary' : 'inherit'} size={'small'}
                         onClick={() => filterTasks('All')}>All</Button>
@@ -68,7 +69,7 @@ export const Todolist = React.memo( ({todolistId}: TodolistPropsType) => {
                         size={'small'} onClick={() => filterTasks('Completed')}>Completed</Button>
             </div>
             <List>
-                {tasks.map(mf => <Task key={mf.id} id={mf.id} todolistId={todolistId}/>)}
+                {tasks.map(mf => <Task key={mf.id} id={mf.id} todolistId={todolistId} disabled={disable}/>)}
             </List>
         </div>
     )

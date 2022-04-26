@@ -39,49 +39,39 @@ export const changeTodolistEntityStatusAC = (todolistId: string, entityStatus: R
 export const setTodolistsTC = () => (dispatch: Dispatch<TodolistActionTypes>) => {
     dispatch(changeAppLoadingStatus(RequestStatusType.loading))
     todolistsAPI.getTodolists()
-        .then(res => {
-            dispatch(setTodolistsAC(res.data))
-        })
+        .then(res => dispatch(setTodolistsAC(res.data)))
         .catch((err: AxiosError) => dispatch(changeAppErrorValue(err.message)))
         .finally(()=> dispatch(changeAppLoadingStatus(RequestStatusType.succeeded)))
 }
 export const addTodolistTC = (title: string) => (dispatch: Dispatch<TodolistActionTypes>) => {
     dispatch(changeAppLoadingStatus(RequestStatusType.loading))
     todolistsAPI.createTodolist(title)
-        .then(res => {
-            if (res.data.resultCode === ApiResultCode.success) {
-                dispatch(addTodolistAC(res.data.data.item))
-            } else {
-                dispatch(changeAppErrorValue(res.data.messages ? res.data.messages[0] : "Some error is occurred"))
-            }
-        })
+        .then(res => res.data.resultCode === ApiResultCode.success
+                ? dispatch(addTodolistAC(res.data.data.item))
+                : dispatch(changeAppErrorValue(res.data.messages ? res.data.messages[0] : 'Some error is occurred')))
         .catch((err: AxiosError) => dispatch(changeAppErrorValue(err.message)))
         .finally(()=> dispatch(changeAppLoadingStatus(RequestStatusType.succeeded)))
 }
 export const changeTodolistTitleTC = (title: string, todolistId: string) => (dispatch: Dispatch<TodolistActionTypes>) => {
     dispatch(changeAppLoadingStatus(RequestStatusType.loading))
+    dispatch(changeTodolistEntityStatusAC(todolistId, RequestStatusType.loading))
     todolistsAPI.updateTodolist(todolistId, title)
-        .then(res => {
-            if (res.data.resultCode === ApiResultCode.success) {
-                dispatch(changeTodolistTitleAC(title, todolistId))
-            } else {
-                dispatch(changeAppErrorValue(res.data.messages ? res.data.messages[0] : "Some error is occurred"))
-            }
-        })
+        .then(res => res.data.resultCode === ApiResultCode.success
+                ? dispatch(changeTodolistTitleAC(title, todolistId))
+                : dispatch(changeAppErrorValue(res.data.messages ? res.data.messages[0] : "Some error is occurred")))
         .catch((err: AxiosError) => dispatch(changeAppErrorValue(err.message)))
-        .finally(()=> dispatch(changeAppLoadingStatus(RequestStatusType.succeeded)))
+        .finally(()=> {
+            dispatch(changeAppLoadingStatus(RequestStatusType.succeeded))
+            dispatch(changeTodolistEntityStatusAC(todolistId, RequestStatusType.succeeded))
+        })
 }
 export const removeTodolistTC = (todolistId: string) => (dispatch: Dispatch<TodolistActionTypes>) => {
     dispatch(changeAppLoadingStatus(RequestStatusType.loading))
     dispatch(changeTodolistEntityStatusAC(todolistId, RequestStatusType.loading))
     todolistsAPI.deleteTodolist(todolistId)
-        .then(res => {
-            if (res.data.resultCode === ApiResultCode.success) {
-                dispatch(removeTodolistAC(todolistId))
-            } else {
-                dispatch(changeAppErrorValue(res.data.messages ? res.data.messages[0] : "Some error is occurred"))
-            }
-        })
+        .then(res => res.data.resultCode === ApiResultCode.success
+                ? dispatch(removeTodolistAC(todolistId))
+                : dispatch(changeAppErrorValue(res.data.messages ? res.data.messages[0] : "Some error is occurred")))
         .catch((err: AxiosError) => dispatch(changeAppErrorValue(err.message)))
         .finally(()=> dispatch(changeAppLoadingStatus(RequestStatusType.succeeded)))
 }

@@ -8,10 +8,15 @@ import Container from '@mui/material/Container';
 import Grid from '@mui/material/Grid';
 import Paper from '@mui/material/Paper';
 
-export const TodolistsList = React.memo(() => {
+type TodolistsListPropsType = {
+    demo?: boolean
+}
+
+export const TodolistsList = React.memo(({demo = false}: TodolistsListPropsType) => {
     console.log("TodolistsList")
 
     useEffect(() => {
+        if (demo) return
         dispatch(setTodolistsTC())
         // eslint-disable-next-line
     }, [])
@@ -33,6 +38,7 @@ export const TodolistsList = React.memo(() => {
                             <Paper elevation={4} style={{padding: '15px'}}>
                                 <Todolist
                                     todolistId={mt}
+                                    demo={demo}
                                 />
                             </Paper>
                         </Grid>

@@ -12,7 +12,8 @@ export enum TaskPriorities {
     Later
 }
 export enum ApiResultCode {
-    success
+    success,
+    error
 }
 export enum RequestStatusType {
     idle,

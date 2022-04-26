@@ -22,21 +22,19 @@ export const tasksReducer = (tasks: TasksPropsType = initialState, action: Tasks
         case 'ADD-TASK':
             return {...tasks, [action.todolistId]: [{...action.task, entityStatus: RequestStatusType.idle}, ...tasks[action.todolistId]]}
         case 'UPDATE-TASK':
-            return {
-                ...tasks,
-                [action.todolistId]: tasks[action.todolistId].map(t => t.id === action.taskId ? {...t, ...action.updateObject} : t)
-            }
+            return {...tasks,
+                [action.todolistId]: tasks[action.todolistId].map(t => t.id === action.taskId ? {...t, ...action.updateObject} : t)}
         case 'REMOVE-TASK':
             return {...tasks, [action.todolistId]: tasks[action.todolistId].filter(task => task.id !== action.taskId)}
+        case 'CHANGE-TASK-ENTITY-STATUS':
+            return {...tasks, [action.todolistId]: tasks[action.todolistId]
+                    .map(task => task.id === action.taskId ? {...task, entityStatus: action.status} : task)}
         case 'ADD-TODOLIST':
             return {[action.todolist.id]: [], ...tasks}
         case 'REMOVE-TODOLIST':
             let newState = {...tasks}
             delete newState[action.todolistId]
             return newState
-        case 'CHANGE-TASK-ENTITY-STATUS':
-            return {...tasks, [action.todolistId]: tasks[action.todolistId]
-                    .map(task => task.id === action.taskId ? {...task, entityStatus: action.status} : task)}
         default:
             return tasks
     }
@@ -47,35 +45,30 @@ export const setTasksAC = (todolistId: string, tasks: TaskType[]) => ({type: 'SE
 export const addTaskAC = (todolistId: string, task: TaskType) => ({type: 'ADD-TASK', todolistId, task} as const)
 export const updateTaskAC = (taskId: string, todolistId: string, updateObject: TaskUpdateDomainType) => (
     {type: 'UPDATE-TASK', taskId, todolistId, updateObject} as const)
-export const removeTaskAC = (taskId: string, todolistId: string) => ({type: 'REMOVE-TASK', taskId, todolistId} as const)
 export const changeTaskEntityStatusAC = (taskId: string, todolistId: string, status: RequestStatusType) => (
     {type: 'CHANGE-TASK-ENTITY-STATUS', taskId, todolistId, status} as const)
+export const removeTaskAC = (taskId: string, todolistId: string) => ({type: 'REMOVE-TASK', taskId, todolistId} as const)
 
 // thunks
 export const setTasksTC = (todolistId: string) => (dispatch: Dispatch<TasksActionTypes>) => {
     dispatch(changeAppLoadingStatus(RequestStatusType.loading))
     tasksAPI.getTasks(todolistId)
-        .then(res => {
-            dispatch(setTasksAC(todolistId, res.data.items))
-        })
+        .then(res => dispatch(setTasksAC(todolistId, res.data.items)))
         .catch((err: AxiosError) => dispatch(changeAppErrorValue(err.message)))
         .finally(()=> dispatch(changeAppLoadingStatus(RequestStatusType.succeeded)))
 }
 export const addTaskTC = (title: string, todolistId: string) => (dispatch: Dispatch<TasksActionTypes>) => {
     dispatch(changeAppLoadingStatus(RequestStatusType.loading))
     tasksAPI.createTask(todolistId, title)
-        .then(res => {
-            if (res.data.resultCode === ApiResultCode.success) {
-                dispatch(addTaskAC(todolistId, res.data.data.item))
-            } else {
-                handlerForAppErrorInThen(dispatch, res.data.messages)
-            }
-        })
+        .then(res => res.data.resultCode === ApiResultCode.success
+                ? dispatch(addTaskAC(todolistId, res.data.data.item))
+                : handlerForAppErrorInThen(dispatch, res.data.messages))
         .catch((err: AxiosError) => dispatch(changeAppErrorValue(err.message)))
         .finally(()=> dispatch(changeAppLoadingStatus(RequestStatusType.succeeded)))
 }
 export const updateTaskTC = (todolistId: string, taskId: string, updateObject: TaskUpdateDomainType) => (dispatch: Dispatch<TasksActionTypes>, getState: () => AppStateRootType) => {
     dispatch(changeAppLoadingStatus(RequestStatusType.loading))
+    dispatch(changeTaskEntityStatusAC(taskId, todolistId, RequestStatusType.loading))
     let task = getState().tasks[todolistId].find(t => t.id === taskId)
     if (!task) return console.warn('Task was not found')
 
@@ -89,26 +82,22 @@ export const updateTaskTC = (todolistId: string, taskId: string, updateObject: T
         ...updateObject
     }
     tasksAPI.updateTask(todolistId, taskId, model)
-        .then(res => {
-            if (res.data.resultCode === ApiResultCode.success) {
-                dispatch(updateTaskAC(taskId, todolistId, updateObject))
-            } else {
-                handlerForAppErrorInThen(dispatch, res.data.messages)
-            }
-        })
+        .then(res => res.data.resultCode === ApiResultCode.success
+                ? dispatch(updateTaskAC(taskId, todolistId, updateObject))
+                : handlerForAppErrorInThen(dispatch, res.data.messages))
         .catch((err: AxiosError) => dispatch(changeAppErrorValue(err.message)))
-        .finally(()=> dispatch(changeAppLoadingStatus(RequestStatusType.succeeded)))
+        .finally(()=> {
+            dispatch(changeAppLoadingStatus(RequestStatusType.succeeded))
+            dispatch(changeTaskEntityStatusAC(taskId, todolistId, RequestStatusType.succeeded))
+        })
 }
 export const removeTaskTC = (taskId: string, todolistId: string) => (dispatch: Dispatch<TasksActionTypes>) => {
     dispatch(changeAppLoadingStatus(RequestStatusType.loading))
+    dispatch(changeTaskEntityStatusAC(taskId, todolistId, RequestStatusType.loading))
     tasksAPI.deleteTask(todolistId, taskId)
-        .then(res => {
-            if (res.data.resultCode === ApiResultCode.success) {
-                dispatch(removeTaskAC(taskId, todolistId))
-            }else {
-                handlerForAppErrorInThen(dispatch, res.data.messages)
-            }
-        })
+        .then(res => res.data.resultCode === ApiResultCode.success
+                ? dispatch(removeTaskAC(taskId, todolistId))
+                : handlerForAppErrorInThen(dispatch, res.data.messages))
         .catch((err: AxiosError) => dispatch(changeAppErrorValue(err.message)))
         .finally(()=> dispatch(changeAppLoadingStatus(RequestStatusType.succeeded)))
 }

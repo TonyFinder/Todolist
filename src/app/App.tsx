@@ -11,7 +11,11 @@ import {useCustomSelector} from './store';
 import ErrorSnackbar from '../components/ErrorSnackbar/ErrorSnackbar';
 import {RequestStatusType} from '../utils/enums';
 
-export const App = React.memo( () => {
+type AppPropsType = {
+    demo?: boolean
+}
+
+export const App = React.memo( ({demo = false}: AppPropsType) => {
     console.log("App")
 
     const loadingStatus = useCustomSelector<RequestStatusType>(state => state.app.loadingStatus)
@@ -31,7 +35,7 @@ export const App = React.memo( () => {
             </AppBar>
             {loadingStatus === RequestStatusType.loading && <LinearProgress color="success"/>}
 
-            <TodolistsList/>
+            <TodolistsList demo={demo}/>
 
             <ErrorSnackbar/>
         </div>

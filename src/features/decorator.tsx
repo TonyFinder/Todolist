@@ -1,14 +1,17 @@
 import React from 'react';
-import {Provider} from 'react-redux';
+import {Provider, TypedUseSelectorHook, useSelector} from 'react-redux';
 import {AppStateRootType} from '../app/store';
-import {combineReducers, createStore} from 'redux';
+import {applyMiddleware, combineReducers, createStore} from 'redux';
 import {tasksReducer} from './reducer-tasks';
 import {todolistsReducer} from './reducer-todolist';
 import {RequestStatusType, TaskPriorities, TaskStatuses} from '../utils/enums';
+import {appReducer} from './app-reducer';
+import thunk from 'redux-thunk';
 
 const rootReducer = combineReducers({
     tasks: tasksReducer,
-    todolists: todolistsReducer
+    todolists: todolistsReducer,
+    app: appReducer
 })
 
 const initialGlobalState: AppStateRootType = {
@@ -38,7 +41,9 @@ const initialGlobalState: AppStateRootType = {
     }
 };
 
-export const storyBookStore = createStore(rootReducer, initialGlobalState);
+export const storyBookStore = createStore(rootReducer, initialGlobalState, applyMiddleware(thunk));
+
+export const useCustomSelector: TypedUseSelectorHook<AppStateRootType> = useSelector
 
 export const decoratorHOC = (storyFn: () => React.ReactNode) => {
     return <Provider store={storyBookStore}>{storyFn()}</Provider>
