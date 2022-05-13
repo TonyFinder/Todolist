@@ -1,5 +1,5 @@
 import React from 'react';
-import {TodolistsList} from '../features/TodolistsList/TodolistsList';
+import {Todolists} from '../features/TodolistsList/Todolists';
 import AppBar from '@mui/material/AppBar';
 import Button from '@mui/material/Button';
 import Toolbar from '@mui/material/Toolbar';
@@ -35,7 +35,7 @@ export const App = React.memo( ({demo = false}: AppPropsType) => {
             </AppBar>
             {loadingStatus === RequestStatusType.loading && <LinearProgress color="success"/>}
 
-            <TodolistsList demo={demo}/>
+            <Todolists demo={demo}/>
 
             <ErrorSnackbar/>
         </div>

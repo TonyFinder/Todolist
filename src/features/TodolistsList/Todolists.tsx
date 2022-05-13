@@ -8,11 +8,11 @@ import Container from '@mui/material/Container';
 import Grid from '@mui/material/Grid';
 import Paper from '@mui/material/Paper';
 
-type TodolistsListPropsType = {
+type TodolistsPropsType = {
     demo?: boolean
 }
 
-export const TodolistsList = React.memo(({demo = false}: TodolistsListPropsType) => {
+export const Todolists = React.memo(({demo = false}: TodolistsPropsType) => {
     console.log("TodolistsList")
 
     useEffect(() => {

@@ -1,9 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="7e68dc76-5612-4367-9842-d746373be903" name="Default Changelist" comment="Lesson 15. Disabling elements to prevent unnecessary requests to the server. StoryBook refactoring.">
+    <list default="true" id="7e68dc76-5612-4367-9842-d746373be903" name="Default Changelist" comment="Lesson 15. Some changes have been made.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/features/app-reducer.test.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/app-reducer.test.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/App.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/store.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/store.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/features/TodolistsList/TodolistsList.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/TodolistsList/Todolists.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/features/reducer-tasks.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/reducer-tasks.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/features/reducer-todolist.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/reducer-todolist.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -30,6 +34,9 @@
       <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
     </file-type-list>
   </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
   <component name="ProblemsViewState">
     <option name="selectedIndex" value="1" />
   </component>
@@ -41,19 +48,17 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">
-    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
-    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="node.js.detected.package.eslint" value="true" />
-    <property name="node.js.selected.package.eslint" value="(autodetect)" />
-    <property name="nodejs.jest.jest_package" value="$PROJECT_DIR$/node_modules/react-scripts" />
-    <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="settings.nodejs" />
-    <property name="ts.external.directory.path" value="D:\Incubator\Studying\Monday-Friday\made-by-myself-todolist\node_modules\typescript\lib" />
-    <property name="vue.rearranger.settings.migration" value="true" />
-  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "D:/Incubator/Studying/Monday-Friday/made-by-myself-todolist",
+    "node.js.detected.package.eslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "nodejs_package_manager_path": "yarn",
+    "ts.external.directory.path": "D:\\Incubator\\Studying\\Monday-Friday\\made-by-myself-todolist\\node_modules\\typescript\\lib",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="D:\Incubator\Studying\Monday-Friday\made-by-myself-todolist\src\stories" />
@@ -129,8 +134,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="npm.test" />
         <item itemvalue="npm.start" />
+        <item itemvalue="npm.test" />
         <item itemvalue="npm.storybook" />
         <item itemvalue="npm.test:integration" />
         <item itemvalue="Jest.addItemForm" />
@@ -190,7 +195,11 @@
       <workItem from="1649940355089" duration="1168000" />
       <workItem from="1649941536473" duration="19820000" />
       <workItem from="1650775349068" duration="28195000" />
-      <workItem from="1650972245663" duration="356000" />
+      <workItem from="1650972245663" duration="449000" />
+      <workItem from="1650973072614" duration="493000" />
+      <workItem from="1650973767773" duration="102000" />
+      <workItem from="1651835708429" duration="1861000" />
+      <workItem from="1652404314510" duration="5783000" />
     </task>
     <task id="LOCAL-00001" summary="Lesson 7. Material UI. Changed all custom components to Material UI.">
       <created>1634021489874</created>
@@ -346,7 +355,14 @@
       <option name="project" value="LOCAL" />
       <updated>1650949023196</updated>
     </task>
-    <option name="localTasksCounter" value="23" />
+    <task id="LOCAL-00023" summary="Lesson 15. Some changes have been made.">
+      <created>1650972642426</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1650972642426</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -362,7 +378,6 @@
         </entry>
       </map>
     </option>
-    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Lesson 7. Material UI. Changed all custom components to Material UI." />
@@ -387,6 +402,7 @@
     <MESSAGE value="Lesson 15. Disable buttons when todolist is deleting." />
     <MESSAGE value="Lesson 15. Refactoring + preparation for tasks disable." />
     <MESSAGE value="Lesson 15. Disabling elements to prevent unnecessary requests to the server. StoryBook refactoring." />
-    <option name="LAST_COMMIT_MESSAGE" value="Lesson 15. Disabling elements to prevent unnecessary requests to the server. StoryBook refactoring." />
+    <MESSAGE value="Lesson 15. Some changes have been made." />
+    <option name="LAST_COMMIT_MESSAGE" value="Lesson 15. Some changes have been made." />
   </component>
 </project>

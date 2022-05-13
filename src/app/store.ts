@@ -1,9 +1,9 @@
 import {applyMiddleware, combineReducers, createStore} from 'redux';
-import {todolistsReducer} from '../features/reducer-todolist';
-import {tasksReducer} from '../features/reducer-tasks';
-import thunk from 'redux-thunk';
+import {TodolistActionTypes, todolistsReducer} from '../features/reducer-todolist';
+import {TasksActionTypes, tasksReducer} from '../features/reducer-tasks';
+import thunk, {ThunkAction} from 'redux-thunk';
 import {TypedUseSelectorHook, useSelector} from 'react-redux';
-import {appReducer} from '../features/app-reducer';
+import {AppActionType, appReducer} from '../features/app-reducer';
 
 let rootReducer = combineReducers({
     todolists: todolistsReducer,
@@ -18,6 +18,10 @@ export const useCustomSelector: TypedUseSelectorHook<AppStateRootType> = useSele
 
 // types
 export type AppStateRootType = ReturnType<typeof rootReducer>
+export type RootActionType = AppActionType | TasksActionTypes | TodolistActionTypes
+// https://redux.js.org/usage/usage-with-typescript
+export type AppThunk<ReturnType = void> = ThunkAction<ReturnType, AppStateRootType, unknown, RootActionType>
+
 
 // @ts-ignore
 window.store = store
