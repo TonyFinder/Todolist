@@ -1,15 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="7e68dc76-5612-4367-9842-d746373be903" name="Default Changelist" comment="Lesson 15. Thunk typing.">
-      <change afterPath="$PROJECT_DIR$/src/features/Error404/Error404.module.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/features/Error404/Error404.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/features/Login/Login.tsx" afterDir="false" />
+    <list default="true" id="7e68dc76-5612-4367-9842-d746373be903" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/App.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/features/Login/Login.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/Login/Login.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -208,7 +202,7 @@
       <workItem from="1653023255047" duration="5167000" />
       <workItem from="1653479116584" duration="5991000" />
       <workItem from="1653831450126" duration="10341000" />
-      <workItem from="1654081769834" duration="6757000" />
+      <workItem from="1654081769834" duration="9581000" />
     </task>
     <task id="LOCAL-00001" summary="Lesson 7. Material UI. Changed all custom components to Material UI.">
       <created>1634021489874</created>
@@ -378,7 +372,14 @@
       <option name="project" value="LOCAL" />
       <updated>1652420045271</updated>
     </task>
-    <option name="localTasksCounter" value="25" />
+    <task id="LOCAL-00025" summary="Lesson 16. Formik and react router dom were installed. Error page and routes were added as well.">
+      <created>1654227252419</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1654227252419</updated>
+    </task>
+    <option name="localTasksCounter" value="26" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -420,6 +421,7 @@
     <MESSAGE value="Lesson 15. Disabling elements to prevent unnecessary requests to the server. StoryBook refactoring." />
     <MESSAGE value="Lesson 15. Some changes have been made." />
     <MESSAGE value="Lesson 15. Thunk typing." />
-    <option name="LAST_COMMIT_MESSAGE" value="Lesson 15. Thunk typing." />
+    <MESSAGE value="Lesson 16. Formik and react router dom were installed. Error page and routes were added as well." />
+    <option name="LAST_COMMIT_MESSAGE" value="Lesson 16. Formik and react router dom were installed. Error page and routes were added as well." />
   </component>
 </project>
