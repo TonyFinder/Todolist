@@ -19,19 +19,19 @@ export const authReducer = (state: initialStateType = initialState, action: Auth
 }
 
 // actions
-export const setLoggedInAC = (isLoggedIn: boolean) => ({type: 'AUTH/SET-LOGGED-IN', isLoggedIn} as const)
+export const setLoggedIn = (isLoggedIn: boolean) => ({type: 'AUTH/SET-LOGGED-IN', isLoggedIn} as const)
 
 // thunks
 export const logInTC = (data: LoginRequestType): AppThunk => dispatch => {
     dispatch(changeAppLoadingStatus(RequestStatusType.loading))
     authAPI.login(data)
         .then(res => res.data.resultCode === ApiResultCode.success
-            ? dispatch(setLoggedInAC(true))
+            ? dispatch(setLoggedIn(true))
             : handlerForAppErrorInThen(dispatch, res.data.messages))
         .catch((err: AxiosError) => dispatch(changeAppErrorValue(err.message)))
         .finally(()=> dispatch(changeAppLoadingStatus(RequestStatusType.succeeded)))
 }
 
 // types
-export type AuthActionType = ReturnType<typeof setLoggedInAC>
+export type AuthActionType = ReturnType<typeof setLoggedIn>
 type initialStateType = typeof initialState

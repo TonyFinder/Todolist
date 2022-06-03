@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {Todolists} from '../features/TodolistsList/Todolists';
 import AppBar from '@mui/material/AppBar';
 import Button from '@mui/material/Button';
@@ -13,6 +13,9 @@ import {RequestStatusType} from '../utils/enums';
 import {Navigate, Route, Routes} from 'react-router-dom';
 import {Login} from '../features/Login/Login';
 import {Error404} from '../features/Error404/Error404';
+import {AppStateType, initializeAppTC} from '../features/app-reducer';
+import {useDispatch} from 'react-redux';
+import CircularProgress from '@mui/material/CircularProgress';
 
 type AppPropsType = {
     demo?: boolean
@@ -21,7 +24,19 @@ type AppPropsType = {
 export const App = React.memo( ({demo = false}: AppPropsType) => {
     console.log("App")
 
-    const loadingStatus = useCustomSelector<RequestStatusType>(state => state.app.loadingStatus)
+    const {loadingStatus, isInitialized} = useCustomSelector<AppStateType>(state => state.app)
+    const dispatch = useDispatch()
+
+    useEffect(()=> {
+        dispatch(initializeAppTC())
+        // eslint-disable-next-line
+    }, [])
+
+    if (!isInitialized) {
+        return <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center', marginTop: 50}}>
+            <CircularProgress/>
+        </div>
+    }
 
     return (
         <div className="App">

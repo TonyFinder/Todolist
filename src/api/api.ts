@@ -43,6 +43,9 @@ export const authAPI = {
     login(data: LoginRequestType) {
         return instance.post<any, BaseResponseType<{userId: number}>, LoginRequestType>(`auth/login`, {...data})
     },
+    me() {
+        return instance.get<any, BaseResponseType<MeResponseDataType>, {}>('auth/me')
+    }
 }
 
 
@@ -91,4 +94,9 @@ export type LoginRequestType = {
     password: string
     rememberMe?: boolean
     captcha?: string
+}
+type MeResponseDataType = {
+    id: number
+    email: string
+    login: string
 }

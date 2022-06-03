@@ -39,7 +39,8 @@ const initialGlobalState: AppStateRootType = {
     },
     app: {
         loadingStatus: RequestStatusType.idle,
-        errorServer: null
+        errorServer: null,
+        isInitialized: true
     },
     auth: {
         isLoggedIn: true
