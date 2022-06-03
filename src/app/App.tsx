@@ -10,6 +10,9 @@ import LinearProgress from '@mui/material/LinearProgress';
 import {useCustomSelector} from './store';
 import ErrorSnackbar from '../components/ErrorSnackbar/ErrorSnackbar';
 import {RequestStatusType} from '../utils/enums';
+import {Navigate, Route, Routes} from 'react-router-dom';
+import {Login} from '../features/Login/Login';
+import {Error404} from '../features/Error404/Error404';
 
 type AppPropsType = {
     demo?: boolean
@@ -35,7 +38,12 @@ export const App = React.memo( ({demo = false}: AppPropsType) => {
             </AppBar>
             {loadingStatus === RequestStatusType.loading && <LinearProgress color="success"/>}
 
-            <Todolists demo={demo}/>
+            <Routes>
+                <Route path='/' element={<Todolists demo={demo}/>}></Route>
+                <Route path='login' element={<Login/>}></Route>
+                <Route path='*' element={<Navigate to='404'/>}></Route>
+                <Route path='404' element={<Error404/>}></Route>
+            </Routes>
 
             <ErrorSnackbar/>
         </div>
