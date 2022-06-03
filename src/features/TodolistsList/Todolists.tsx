@@ -7,6 +7,7 @@ import {Todolist} from './Todolist/Todolist';
 import Container from '@mui/material/Container';
 import Grid from '@mui/material/Grid';
 import Paper from '@mui/material/Paper';
+import {Navigate} from 'react-router-dom';
 
 type TodolistsPropsType = {
     demo?: boolean
@@ -23,8 +24,10 @@ export const Todolists = React.memo(({demo = false}: TodolistsPropsType) => {
 
     let dispatch = useDispatch()
     let todolists = useCustomSelector<string[]>(state => state.todolists.map(m => m.id))
-
+    let isLoggedIn = useCustomSelector<boolean>(state => state.auth.isLoggedIn)
     const addTodolist = useCallback((title: string) => dispatch(addTodolistTC(title)), [dispatch])
+
+    if (!isLoggedIn) return <Navigate to='login'/>
 
     return (
         <Container maxWidth={'xl'}>

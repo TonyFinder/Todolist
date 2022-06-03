@@ -16,13 +16,13 @@ export const todolistsAPI = {
         return instance.get<TodolistType[]>('todo-lists')
     },
     createTodolist(title: string) {
-        return instance.post<any, BaseTodolistResponseType<{item: TodolistType}>, {title: string}>('todo-lists', {title})
+        return instance.post<any, BaseResponseType<{item: TodolistType}>, {title: string}>('todo-lists', {title})
     },
     updateTodolist(todolistId: string, title: string) {
-        return instance.put<any, BaseTodolistResponseType, {title: string}>(`todo-lists/${todolistId}`, {title})
+        return instance.put<any, BaseResponseType, {title: string}>(`todo-lists/${todolistId}`, {title})
     },
     deleteTodolist(todolistId: string) {
-        return instance.delete<any, BaseTodolistResponseType, {}>(`todo-lists/${todolistId}`)
+        return instance.delete<any, BaseResponseType, {}>(`todo-lists/${todolistId}`)
     }
 }
 export const tasksAPI = {
@@ -30,15 +30,21 @@ export const tasksAPI = {
         return instance.get<TasksResponseType>(`todo-lists/${todolistId}/tasks`)
     },
     createTask(todolistId: string, title: string) {
-        return instance.post<any, BaseResponseTasksType<{item: TaskType}>, {title: string}>(`todo-lists/${todolistId}/tasks`, {title})
+        return instance.post<any, BaseResponseType<{item: TaskType}>, {title: string}>(`todo-lists/${todolistId}/tasks`, {title})
     },
     updateTask(todolistId: string, taskId: string, updateObject: TaskUpdateDomainType) {
-        return instance.put<any, BaseResponseTasksType<{item: TaskType}>, TaskUpdateDomainType>(`todo-lists/${todolistId}/tasks/${taskId}`, updateObject)
+        return instance.put<any, BaseResponseType<{item: TaskType}>, TaskUpdateDomainType>(`todo-lists/${todolistId}/tasks/${taskId}`, updateObject)
     },
     deleteTask(todolistId: string, taskId: string) {
-        return instance.delete<any, BaseResponseTasksType, {}>(`todo-lists/${todolistId}/tasks/${taskId}`)
+        return instance.delete<any, BaseResponseType, {}>(`todo-lists/${todolistId}/tasks/${taskId}`)
     }
 }
+export const authAPI = {
+    login(data: LoginRequestType) {
+        return instance.post<any, BaseResponseType<{userId: number}>, LoginRequestType>(`auth/login`, {...data})
+    },
+}
+
 
 // types
 export type TodolistType = {
@@ -67,11 +73,11 @@ export type TaskUpdateType = {
     startDate: string
     deadline: string
 }
-type BaseTodolistResponseType<T = {}> = {
+type BaseResponseType<T = {}> = {
     data: {
-        fieldsErrors: []
-        messages: string[]
         resultCode: number
+        messages: string[]
+        fieldsErrors: []
         data: T
     }
 }
@@ -80,11 +86,9 @@ type TasksResponseType = {
     error: string
     totalCount: number
 }
-type BaseResponseTasksType<T = {}> = {
-data: {
-    resultCode: number
-    messages: string[],
-    fieldsErrors: string[]
-    data: T
-}
+export type LoginRequestType = {
+    email: string
+    password: string
+    rememberMe?: boolean
+    captcha?: string
 }

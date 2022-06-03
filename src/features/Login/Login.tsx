@@ -7,14 +7,15 @@ import Button from '@mui/material/Button';
 import Checkbox from '@mui/material/Checkbox';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import {useFormik} from 'formik';
-
-type ValidationDataType = {
-    email?: string
-    password?: string
-    rememberMe?: null | boolean
-}
+import {useDispatch} from 'react-redux';
+import {logInTC} from '../auth-reducer';
+import {useCustomSelector} from '../../app/store';
+import {Navigate} from 'react-router-dom';
 
 export const Login = () => {
+    const dispatch = useDispatch()
+    let isLoggedIn = useCustomSelector<boolean>(state => state.auth.isLoggedIn)
+
     const validate = (values: ValidationDataType) => {
         const errors: ValidationDataType = {};
         if (!values.email) {
@@ -34,15 +35,16 @@ export const Login = () => {
         initialValues: {
             email: '',
             password: '',
-            rememberMe: null
+            rememberMe: false
         },
         validate,
-        onSubmit: (values: ValidationDataType) => {
-            alert(JSON.stringify(values, null, 2))
+        onSubmit: values => {
+            dispatch(logInTC(values))
             formik.resetForm()
         },
     })
 
+    if (isLoggedIn) return <Navigate to='/'/>
 
     return <Grid container justifyContent={'center'}>
         <Grid item justifyContent={'center'}>
@@ -78,4 +80,11 @@ export const Login = () => {
             </FormControl>
         </Grid>
     </Grid>
+}
+
+// types
+export type ValidationDataType = {
+    email?: string
+    password?: string
+    rememberMe?: boolean
 }
