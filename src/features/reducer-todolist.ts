@@ -3,6 +3,7 @@ import {AppActionType, changeAppErrorValue, changeAppLoadingStatus} from './app-
 import {AxiosError} from 'axios';
 import {ApiResultCode, RequestStatusType} from '../utils/enums';
 import {AppThunk} from '../app/store';
+import {setTasksTC} from './reducer-tasks';
 
 let initialState: TodolistDomainType[] = []
 
@@ -42,7 +43,11 @@ export const clearTodolistsAC = () => ({type: 'CLEAR-TODOLISTS'} as const)
 export const setTodolistsTC = (): AppThunk => dispatch => {
     dispatch(changeAppLoadingStatus(RequestStatusType.loading))
     todolistsAPI.getTodolists()
-        .then(res => dispatch(setTodolistsAC(res.data)))
+        .then(res => {
+            dispatch(setTodolistsAC(res.data))
+            return res.data
+        })
+        .then(todos => todos.forEach(todo => dispatch(setTasksTC(todo.id))))
         .catch((err: AxiosError) => dispatch(changeAppErrorValue(err.message)))
         .finally(()=> dispatch(changeAppLoadingStatus(RequestStatusType.succeeded)))
 }

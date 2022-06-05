@@ -3,7 +3,7 @@ import {AddItemForm} from '../../../components/AddItemForm/AddItemForm';
 import {EditableSpan} from '../../../components/EditableSpan/EditableSpan';
 import {useDispatch} from 'react-redux';
 import {useCustomSelector} from '../../../app/store';
-import {addTaskTC, setTasksTC, TaskDomainType} from '../../reducer-tasks';
+import {addTaskTC, TaskDomainType} from '../../reducer-tasks';
 import {
     changeTodolistTitleTC,
     FilterProps,
@@ -26,7 +26,6 @@ export const Todolist = React.memo( ({todolistId, demo = false}: TodolistPropsTy
 
     useEffect(()=>{
         if (demo) return
-        dispatch(setTasksTC(todolistId))
         // eslint-disable-next-line
     },[])
 
