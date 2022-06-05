@@ -40,11 +40,14 @@ export const tasksAPI = {
     }
 }
 export const authAPI = {
+    me() {
+        return instance.get<any, BaseResponseType<MeResponseDataType>, {}>('auth/me')
+    },
     login(data: LoginRequestType) {
         return instance.post<any, BaseResponseType<{userId: number}>, LoginRequestType>(`auth/login`, {...data})
     },
-    me() {
-        return instance.get<any, BaseResponseType<MeResponseDataType>, {}>('auth/me')
+    logout() {
+        return instance.delete<any, BaseResponseType, {}>(`auth/login`)
     }
 }
 

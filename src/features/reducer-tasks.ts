@@ -34,6 +34,8 @@ export const tasksReducer = (tasks: TasksPropsType = initialState, action: Tasks
             let newState = {...tasks}
             delete newState[action.todolistId]
             return newState
+        case 'CLEAR-TASKS':
+            return {}
         default:
             return tasks
     }
@@ -47,6 +49,7 @@ export const updateTaskAC = (taskId: string, todolistId: string, updateObject: T
 export const changeTaskEntityStatusAC = (taskId: string, todolistId: string, status: RequestStatusType) => (
     {type: 'CHANGE-TASK-ENTITY-STATUS', taskId, todolistId, status} as const)
 export const removeTaskAC = (taskId: string, todolistId: string) => ({type: 'REMOVE-TASK', taskId, todolistId} as const)
+export const clearTasksAC = () => ({type: 'CLEAR-TASKS'} as const)
 
 // thunks
 export const setTasksTC = (todolistId: string): AppThunk => dispatch => {
@@ -107,8 +110,9 @@ export type TasksActionTypes =
     | ReturnType<typeof setTasksAC>
     | ReturnType<typeof addTaskAC>
     | ReturnType<typeof updateTaskAC>
-    | ReturnType<typeof removeTaskAC>
     | ReturnType<typeof changeTaskEntityStatusAC>
+    | ReturnType<typeof removeTaskAC>
+    | ReturnType<typeof clearTasksAC>
     | SetTodolistsAT
     | AddTodolistAT
     | RemoveTodolistAT

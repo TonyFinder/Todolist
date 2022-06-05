@@ -4,6 +4,8 @@ import {ApiResultCode, RequestStatusType} from '../utils/enums';
 import {authAPI, LoginRequestType} from '../api/api';
 import {handlerForAppErrorInThen} from '../utils/common-commands';
 import {AxiosError} from 'axios';
+import {clearTasksAC} from './reducer-tasks';
+import {clearTodolistsAC} from './reducer-todolist';
 
 let initialState = {
     isLoggedIn: false
@@ -28,6 +30,20 @@ export const logInTC = (data: LoginRequestType): AppThunk => dispatch => {
         .then(res => res.data.resultCode === ApiResultCode.success
             ? dispatch(setLoggedIn(true))
             : handlerForAppErrorInThen(dispatch, res.data.messages))
+        .catch((err: AxiosError) => dispatch(changeAppErrorValue(err.message)))
+        .finally(()=> dispatch(changeAppLoadingStatus(RequestStatusType.succeeded)))
+}
+export const logoutTC = (): AppThunk => dispatch => {
+    dispatch(changeAppLoadingStatus(RequestStatusType.loading))
+    authAPI.logout()
+        .then(res => {
+                if (res.data.resultCode === ApiResultCode.success) {
+                    dispatch(setLoggedIn(false))
+                    dispatch(clearTasksAC())
+                    dispatch(clearTodolistsAC())
+                } else handlerForAppErrorInThen(dispatch, res.data.messages)
+            }
+        )
         .catch((err: AxiosError) => dispatch(changeAppErrorValue(err.message)))
         .finally(()=> dispatch(changeAppLoadingStatus(RequestStatusType.succeeded)))
 }

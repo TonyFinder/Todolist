@@ -1,6 +1,6 @@
 import {
     addTaskAC,
-    changeTaskEntityStatusAC,
+    changeTaskEntityStatusAC, clearTasksAC,
     removeTaskAC,
     setTasksAC,
     TasksPropsType,
@@ -267,4 +267,27 @@ test('todolist have to be deleted from tasks', () => {
             startDate: "", addedDate: "", priority: TaskPriorities.Low, deadline: "", description: "", entityStatus: RequestStatusType.idle}
         ]
     })
+})
+test('all the tasks have to be cleared', () => {
+    let finalState = tasksReducer(tasks, clearTasksAC())
+
+    expect(tasks).toEqual({
+        ['toDoList_1']: [
+            {id: '1', title: 'HTML&CSS', status: TaskStatuses.Completed, todolistId: 'toDoList_1', order: 0,
+                startDate: "", addedDate: "", priority: TaskPriorities.Low, deadline: "", description: "", entityStatus: RequestStatusType.idle},
+            {id: '2', title: 'JS', status: TaskStatuses.Completed, todolistId: 'toDoList_1', order: 0,
+                startDate: "", addedDate: "", priority: TaskPriorities.Low, deadline: "", description: "", entityStatus: RequestStatusType.idle},
+            {id: '3', title: 'React', status: TaskStatuses.New, todolistId: 'toDoList_1', order: 0,
+                startDate: "", addedDate: "", priority: TaskPriorities.Low, deadline: "", description: "", entityStatus: RequestStatusType.idle}
+        ],
+        ['toDoList_2']: [
+            {id: '1', title: 'Bread', status: TaskStatuses.New, todolistId: 'toDoList_2', order: 0,
+                startDate: "", addedDate: "", priority: TaskPriorities.Low, deadline: "", description: "", entityStatus: RequestStatusType.idle},
+            {id: '2', title: 'Milk', status: TaskStatuses.Completed, todolistId: 'toDoList_2', order: 0,
+                startDate: "", addedDate: "", priority: TaskPriorities.Low, deadline: "", description: "", entityStatus: RequestStatusType.idle},
+            {id: '3', title: 'Soap', status: TaskStatuses.New, todolistId: 'toDoList_2', order: 0,
+                startDate: "", addedDate: "", priority: TaskPriorities.Low, deadline: "", description: "", entityStatus: RequestStatusType.idle}
+        ]
+    })
+    expect(finalState).toEqual({})
 })
