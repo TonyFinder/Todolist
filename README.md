@@ -1,46 +1,27 @@
-# Getting Started with Create React App
+# To-Do list
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Project description
+Here you can create your to-do list and make any necessary changes to it.
 
-## Available Scripts
+## Stack
 
-In the project directory, you can run:
+![React](https://img.shields.io/badge/react-1.svg?style=for-the-badge&logo=react&labelColor=5d9741&color=c1d72f&logoColor=white)
+![Redux](https://img.shields.io/badge/redux-1.svg?style=for-the-badge&logo=redux&labelColor=5d9741&color=c1d72f&logoColor=white)
+![TypeScript](https://img.shields.io/badge/TypeScript-1.svg?style=for-the-badge&logo=TypeScript&labelColor=5d9741&color=c1d72f&logoColor=white)
+![ReactRouter](https://img.shields.io/badge/React_Router-1.svg?style=for-the-badge&logo=ReactRouter&labelColor=5d9741&color=c1d72f&logoColor=white)
+![Jest](https://img.shields.io/badge/Jest-1.svg?style=for-the-badge&logo=Jest&labelColor=5d9741&color=c1d72f&logoColor=white)
+![SCSS](https://img.shields.io/badge/SCSS-1.svg?style=for-the-badge&logo=SASS&labelColor=5d9741&color=c1d72f&logoColor=white)  
+![MUI](https://img.shields.io/badge/MUI-%230081CB.svg?style=for-the-badge&logo=mui&labelColor=5d9741&color=c1d72f&logoColor=white)
+![Formik](https://img.shields.io/badge/Formik-1.svg?style=for-the-badge&logo=Axios&labelColor=5d9741&color=c1d72f&logoColor=white)
+![Axios](https://img.shields.io/badge/Axios-1.svg?style=for-the-badge&logo=Axios&labelColor=5d9741&color=c1d72f&logoColor=white)
+![ReduxThunk](https://img.shields.io/badge/Redux_Thunk-1.svg?style=for-the-badge&logo=ReduxThunk&labelColor=5d9741&color=c1d72f&logoColor=white)  
+![Git](https://img.shields.io/badge/git-%23F05033.svg?style=for-the-badge&logo=git&labelColor=5d9741&color=c1d72f&logoColor=white)
+![GitHub](https://img.shields.io/badge/GitHub-1.svg?style=for-the-badge&logo=GitHub&labelColor=5d9741&color=c1d72f&logoColor=white)
 
-### `yarn start`
+## What you can do in this application
+- Sign up, sign in and log out
+- Create, update and delete to-do lists and tasks for them
+- Filter tasks by all, completed and active
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
-
-### `yarn test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `yarn build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Deployment
+The project has been deployed **[here](https://TonyFinder.github.io/Todolist)**.
