@@ -1,13 +1,13 @@
 # To-Do list
 
 ## Project description
-Here you can create your to-do list and make any necessary changes to it.
+Here you can create your to-do lists and make any necessary changes to them.
 
 ## Stack
 
 ![React](https://img.shields.io/badge/react-1.svg?style=for-the-badge&logo=react&labelColor=5d9741&color=c1d72f&logoColor=white)
 ![Redux](https://img.shields.io/badge/redux-1.svg?style=for-the-badge&logo=redux&labelColor=5d9741&color=c1d72f&logoColor=white)
-![TypeScript](https://img.shields.io/badge/TypeScript-1.svg?style=for-the-badge&logo=TypeScript&labelColor=5d9741&color=c1d72f&logoColor=white)
+![TypeScript](https://img.shields.io/badge/TypeScript-1.svg?style=for-the-badge&logo=TypeScript&labelColor=5d9741&color=c1d72f&logoColor=white)  
 ![ReactRouter](https://img.shields.io/badge/React_Router-1.svg?style=for-the-badge&logo=ReactRouter&labelColor=5d9741&color=c1d72f&logoColor=white)
 ![Jest](https://img.shields.io/badge/Jest-1.svg?style=for-the-badge&logo=Jest&labelColor=5d9741&color=c1d72f&logoColor=white)
 ![SCSS](https://img.shields.io/badge/SCSS-1.svg?style=for-the-badge&logo=SASS&labelColor=5d9741&color=c1d72f&logoColor=white)  
